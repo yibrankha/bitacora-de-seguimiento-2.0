@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Registro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-color: #9D2148;
+            --primary-color-hover: #7f1a39;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .screen {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .active-screen {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-color-hover);
+        }
+        .text-primary {
+            color: var(--primary-color);
+        }
+        .ring-primary:focus {
+            --tw-ring-color: var(--primary-color) !important;
+        }
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+        /* Estilos para el toggle switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: var(--primary-color);
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: var(--primary-color);
+        }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div id="app-container" class="w-full">
+        <!-- 1. PANTALLA DE LOGIN -->
+        <div id="screenLogin" class="screen w-full max-w-sm mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                <i data-lucide="shield-check" class="mx-auto h-16 w-16 text-primary mb-4"></i>
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Acceso al Sistema</h1>
+                <p class="text-gray-500 mb-8">Por favor, ingrese sus credenciales.</p>
+                <form class="space-y-6">
+                    <input type="text" placeholder="Usuario" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                    <input type="password" placeholder="Contraseña" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                    <button data-target="screenPrincipal" type="button" class="nav-button w-full btn-primary text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center space-x-2">
+                        <i data-lucide="log-in" class="icon"></i>
+                        <span>Ingresar</span>
+                    </button>
+                    <div class="pt-4 space-y-2">
+                         <button type="button" class="w-full text-sm text-gray-600 hover:text-primary">Nuevo Usuario</button>
+                         <button type="button" class="w-full text-sm text-gray-600 hover:text-primary">Manual de Usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 2. PANTALLA PRINCIPAL -->
+        <div id="screenPrincipal" class="screen w-full max-w-md mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                <h2 class="text-3xl font-bold text-primary mb-8">Menú Principal</h2>
+                <div class="space-y-4">
+                    <button data-target="screenTipoAtencion" class="nav-button w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center space-x-4 text-left">
+                        <i data-lucide="plus-circle" class="h-8 w-8 text-primary"></i>
+                        <span class="font-semibold text-lg">Nuevo Registro</span>
+                    </button>
+                    <button data-target="screenBusqueda" class="nav-button w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center space-x-4 text-left">
+                        <i data-lucide="search" class="h-8 w-8 text-primary"></i>
+                        <span class="font-semibold text-lg">Búsqueda de Persona</span>
+                    </button>
+                    <button class="w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center space-x-4 text-left">
+                        <i data-lucide="file-text" class="h-8 w-8 text-primary"></i>
+                        <span class="font-semibold text-lg">Generación de Reportes</span>
+                    </button>
+                </div>
+                <div class="mt-8 border-t pt-4">
+                    <button data-target="screenLogin" class="nav-button text-red-500 font-semibold flex items-center justify-center mx-auto space-x-2">
+                        <i data-lucide="log-out" class="icon"></i>
+                        <span>Salir</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3. TIPO DE ATENCIÓN -->
+        <div id="screenTipoAtencion" class="screen w-full max-w-lg mx-auto">
+             <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-primary mb-6">Nuevo Registro</h2>
+                <p class="mb-4">Seleccione el tipo de atención:</p>
+                <div class="space-y-4">
+                    <label class="block bg-gray-50 border rounded-lg p-4 cursor-pointer">
+                        <input type="radio" name="tipoAtencion" value="calle" class="mr-2"> Atención en Calle
+                    </label>
+                    <label class="block bg-gray-50 border rounded-lg p-4 cursor-pointer">
+                        <input type="radio" name="tipoAtencion" value="albergue" class="mr-2"> Atención en Albergue
+                    </label>
+                </div>
+                 <div class="mt-8 flex justify-between">
+                     <button data-target="screenPrincipal" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver</button>
+                     <button id="btnContinuarAtencion" class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Continuar</button>
+                 </div>
+            </div>
+        </div>
+
+        <!-- 4. OPCIONES ATENCIÓN EN CALLE -->
+        <div id="screenOpcionesCalle" class="screen w-full max-w-lg mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                <h2 class="text-2xl font-bold text-primary mb-6">Atención en Calle</h2>
+                <div class="space-y-4">
+                    <button data-target="screenFormularioA" class="nav-button w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg font-semibold text-lg">Aproximación Inicial</button>
+                    <button data-target="screenDesarrolloCuidados" class="nav-button w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg font-semibold text-lg">Desarrollo de Cuidados</button>
+                    <button data-target="screenPlanDeVida" class="nav-button w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg font-semibold text-lg">Plan de Vida</button>
+                </div>
+                 <div class="mt-8 flex justify-start">
+                     <button data-target="screenTipoAtencion" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver</button>
+                 </div>
+            </div>
+        </div>
+
+        <!-- 5. FORMULARIO A: APROXIMACIÓN INICIAL -->
+        <div id="screenFormularioA" class="screen w-full max-w-4xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Módulo A: Aproximación Inicial</h2>
+                <form id="formA" class="space-y-8">
+                    <!-- Sección Brigada y Fecha -->
+                    <fieldset>
+                        <legend class="text-lg font-semibold mb-4 text-gray-700">Información de Brigada</legend>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="numBrigada" class="font-medium text-gray-700 mb-2 block">No. de Brigada: <span id="numBrigadaValue" class="text-primary font-bold">50</span></label>
+                                <input id="numBrigada" type="range" min="1" max="100" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" style="accent-color: var(--primary-color);">
+                            </div>
+                             <input type="text" id="fechaHora" readonly class="w-full px-4 py-2 border bg-gray-100 border-gray-300 rounded-lg">
+                            <input type="text" placeholder="Brigadista 1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                            <input type="text" placeholder="Brigadista 2" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                            <input type="text" placeholder="Brigadista 3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                            <input type="text" placeholder="Ubicación Geográfica" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                        </div>
+                    </fieldset>
+
+                    <!-- Otras Secciones del Formulario -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <fieldset>
+                             <legend class="text-md font-semibold mb-2 text-gray-700">Contacto Exitoso</legend>
+                             <div class="space-y-2">
+                                <label class="flex items-center"><input type="radio" name="contacto" class="h-4 w-4 text-primary mr-2">Sí – Aceptó interactuar</label>
+                                <label class="flex items-center"><input type="radio" name="contacto" class="h-4 w-4 text-primary mr-2">Parcial – Sólo respondió preguntas básicas</label>
+                                <label class="flex items-center"><input type="radio" name="contacto" class="h-4 w-4 text-primary mr-2">No – Rechazó acercamiento</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="text-md font-semibold mb-2 text-gray-700">Contexto de Interacción</legend>
+                            <div class="space-y-2">
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Solo / Sola</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">En pareja</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">En grupo</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Con mascota</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="text-md font-semibold mb-2 text-gray-700">Sexo Aparente</legend>
+                             <div class="space-y-2">
+                                <label class="flex items-center"><input type="radio" name="sexo" class="h-4 w-4 text-primary mr-2">Mujer</label>
+                                <label class="flex items-center"><input type="radio" name="sexo" class="h-4 w-4 text-primary mr-2">Hombre</label>
+                                <label class="flex items-center"><input type="radio" name="sexo" class="h-4 w-4 text-primary mr-2">Otra identidad (LGBTI+)</label>
+                                <label class="flex items-center"><input type="radio" name="sexo" class="h-4 w-4 text-primary mr-2">No especificado</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="text-md font-semibold mb-2 text-gray-700">Rango de Edad</legend>
+                            <div class="space-y-2">
+                                <label class="flex items-center"><input type="radio" name="edad" class="h-4 w-4 text-primary mr-2">18-25 años</label>
+                                <label class="flex items-center"><input type="radio" name="edad" class="h-4 w-4 text-primary mr-2">26-35 años</label>
+                                <label class="flex items-center"><input type="radio" name="edad" class="h-4 w-4 text-primary mr-2">36-50 años</label>
+                                <label class="flex items-center"><input type="radio" name="edad" class="h-4 w-4 text-primary mr-2">+50 años</label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Datos de Identificación -->
+                    <fieldset>
+                         <legend class="text-lg font-semibold mb-4 text-gray-700">Identificación de la Persona</legend>
+                         <p class="mb-4">¿La persona está plenamente identificada y puede dar su nombre completo?</p>
+                         <div class="flex space-x-4 mb-4">
+                             <label class="flex items-center"><input type="radio" name="identificado" value="si" class="h-4 w-4 text-primary mr-2">Sí</label>
+                             <label class="flex items-center"><input type="radio" name="identificado" value="no" class="h-4 w-4 text-primary mr-2">No</label>
+                         </div>
+                         <div id="camposIdentificadoSi" class="hidden grid grid-cols-1 md:grid-cols-3 gap-4">
+                             <input id="nombre" type="text" placeholder="Nombre(s)" class="px-4 py-2 border rounded-lg">
+                             <input id="primerApellido" type="text" placeholder="Primer Apellido" class="px-4 py-2 border rounded-lg">
+                             <input id="segundoApellido" type="text" placeholder="Segundo Apellido (Opcional)" class="px-4 py-2 border rounded-lg">
+                         </div>
+                         <div id="camposIdentificadoNo" class="hidden">
+                             <input id="apodo" type="text" placeholder="Nombre o Apodo" class="w-full md:w-1/3 px-4 py-2 border rounded-lg">
+                         </div>
+                    </fieldset>
+                    
+                    <div id="claveUnicaContainer" class="hidden mt-6 p-4 bg-green-100 text-green-800 rounded-lg text-center">
+                        <p class="font-semibold">Clave Única Generada:</p>
+                        <p id="claveUnicaResultado" class="text-2xl font-mono tracking-widest"></p>
+                    </div>
+                </form>
+
+                <div class="mt-8 pt-6 border-t flex justify-between items-center">
+                    <button data-target="screenOpcionesCalle" type="button" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver</button>
+                    <button id="btnGuardarA" type="button" class="btn-primary text-white font-bold py-3 px-6 rounded-lg flex items-center space-x-2">
+                        <i data-lucide="save" class="icon"></i>
+                        <span>Guardar y Continuar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. FORMULARIO B -->
+        <div id="screenFormularioB" class="screen w-full max-w-4xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Módulo B: Necesidades y Contexto</h2>
+                <form class="space-y-8">
+                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <fieldset>
+                            <legend class="text-md font-semibold mb-2 text-gray-700">Necesidades Inmediatas</legend>
+                            <div class="space-y-2">
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Alimentación</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Agua</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Abrigo / Cobijas</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Atención médica</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                             <legend class="text-md font-semibold mb-2 text-gray-700">Estado de Salud Observable</legend>
+                             <div class="space-y-2">
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Aparentemente estable</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Heridas visibles</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Comportamiento alterado</label>
+                            </div>
+                        </fieldset>
+                         <fieldset>
+                            <legend class="text-md font-semibold mb-2 text-gray-700">Situación de Calle</legend>
+                            <div class="space-y-2">
+                                <label class="flex items-center"><input type="radio" name="situacion" class="h-4 w-4 text-primary mr-2">Recién llegado</label>
+                                <label class="flex items-center"><input type="radio" name="situacion" class="h-4 w-4 text-primary mr-2">Habitual</label>
+                                <label class="flex items-center"><input type="radio" name="situacion" class="h-4 w-4 text-primary mr-2">Intermitente</label>
+                            </div>
+                        </fieldset>
+                         <fieldset>
+                            <legend class="text-md font-semibold mb-2 text-gray-700">Documentación</legend>
+                            <div class="space-y-2">
+                                <label class="flex items-center"><input type="radio" name="docs" class="h-4 w-4 text-primary mr-2">Sí tiene</label>
+                                <label class="flex items-center"><input type="radio" name="docs" class="h-4 w-4 text-primary mr-2">No tiene</label>
+                                <label class="flex items-center"><input type="radio" name="docs" class="h-4 w-4 text-primary mr-2">La perdió/le robaron</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="text-md font-semibold mb-2 text-gray-700">Redes de Apoyo</legend>
+                            <div class="space-y-2">
+                                <label class="flex items-center"><input type="radio" name="apoyo" class="h-4 w-4 text-primary mr-2">Mencionó contacto familiar</label>
+                                <label class="flex items-center"><input type="radio" name="apoyo" class="h-4 w-4 text-primary mr-2">Mencionó amigos</label>
+                                <label class="flex items-center"><input type="radio" name="apoyo" class="h-4 w-4 text-primary mr-2">No tiene red de apoyo</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+                <div class="mt-8 pt-6 border-t flex justify-end">
+                     <button id="btnGuardarFinal" type="button" class="btn-primary text-white font-bold py-3 px-6 rounded-lg flex items-center space-x-2">
+                        <i data-lucide="check-circle" class="icon"></i>
+                        <span>Guardar Registro</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. DESARROLLO DE CUIDADOS -->
+        <div id="screenDesarrolloCuidados" class="screen w-full max-w-5xl mx-auto">
+             <div class="bg-white p-8 rounded-xl shadow-lg">
+                <div class="flex justify-between items-center mb-6 border-b pb-4">
+                    <h2 class="text-2xl font-bold text-primary">Desarrollo de Cuidados</h2>
+                    <div class="flex items-center space-x-2">
+                        <label for="rolEnlace" class="text-sm font-medium text-gray-700">Rol Enlace Dependencia:</label>
+                        <div class="relative inline-block w-10 align-middle select-none">
+                            <input type="checkbox" id="rolEnlace" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                            <label for="rolEnlace" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <fieldset>
+                        <legend class="text-xl font-semibold mb-4 text-gray-800">Necesidades Inmediatas</legend>
+                        <div id="cuidadosInmediatosContainer" class="space-y-4"></div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="text-xl font-semibold mb-4 text-gray-800">Necesidades a Mediano Plazo</legend>
+                        <div id="cuidadosMedianoPlazoContainer" class="space-y-4"></div>
+                    </fieldset>
+                </div>
+
+                <div class="mt-8 pt-6 border-t flex justify-between items-center">
+                    <button data-target="screenOpcionesCalle" type="button" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver</button>
+                    <div>
+                        <button class="bg-blue-100 text-blue-800 font-bold py-2 px-4 rounded-lg mr-2">Perfil PSC</button>
+                        <button class="bg-red-100 text-red-800 font-bold py-2 px-4 rounded-lg">Historial Clínico</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. PLAN DE VIDA -->
+        <div id="screenPlanDeVida" class="screen w-full max-w-5xl mx-auto">
+             <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Plan de Vida</h2>
+                <div id="planDeVidaContainer" class="space-y-6">
+                    <!-- Las tarjetas del plan se insertarán aquí -->
+                </div>
+
+                <fieldset class="mt-8">
+                    <legend class="text-xl font-semibold mb-4 text-gray-800">Otras Iniciativas</legend>
+                    <div class="bg-gray-50 p-4 rounded-lg border space-y-4">
+                        <input type="text" class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Título de la iniciativa...">
+                        <textarea class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" rows="4" placeholder="Describa aquí otras iniciativas, metas o programas..."></textarea>
+                    </div>
+                </fieldset>
+
+                <div class="mt-8 pt-6 border-t flex justify-between items-center">
+                    <button data-target="screenOpcionesCalle" type="button" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver</button>
+                    <button class="btn-primary text-white font-bold py-3 px-6 rounded-lg flex items-center space-x-2">
+                        <i data-lucide="save" class="icon"></i>
+                        <span>Guardar Plan de Vida</span>
+                    </button>
+                </div>
+             </div>
+        </div>
+
+        <!-- 9. BÚSQUEDA DE PERSONA -->
+        <div id="screenBusqueda" class="screen w-full max-w-4xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full">
+                <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Búsqueda de Persona</h2>
+                <div class="mb-4">
+                    <p class="font-semibold mb-2">Buscar por:</p>
+                    <div class="flex space-x-4">
+                        <label class="flex items-center"><input type="radio" name="tipoBusqueda" value="nombre" class="h-4 w-4 text-primary mr-2" checked>Nombre</label>
+                        <label class="flex items-center"><input type="radio" name="tipoBusqueda" value="id" class="h-4 w-4 text-primary mr-2">Número de ID</label>
+                    </div>
+                </div>
+                <div id="campoBusquedaNombre" class="relative">
+                    <input type="text" id="inputBusquedaNombre" placeholder="Escriba un nombre o apellido..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                    <i data-lucide="search" class="absolute right-4 top-3.5 text-gray-400"></i>
+                </div>
+                <div id="campoBusquedaID" class="relative hidden">
+                    <input type="text" id="inputBusquedaID" placeholder="Escriba la clave única..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2">
+                     <i data-lucide="key-round" class="absolute right-4 top-3.5 text-gray-400"></i>
+                </div>
+
+                <div id="resultadosBusqueda" class="mt-6 max-h-96 overflow-y-auto">
+                    <!-- Los resultados aparecerán aquí -->
+                </div>
+
+                <div class="mt-8 pt-6 border-t flex justify-start">
+                    <button data-target="screenPrincipal" type="button" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. DETALLE DE PERSONA -->
+        <div id="screenDetallePersona" class="screen w-full max-w-6xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full">
+                <div class="border-b pb-4 mb-6">
+                    <h2 id="detallePersonaNombre" class="text-3xl font-bold text-primary"></h2>
+                    <p id="detallePersonaID" class="text-lg text-gray-500 font-mono"></p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Columna de Navegación -->
+                    <div class="md:col-span-1">
+                        <div class="space-y-2">
+                             <button data-tab="datosGenerales" class="tab-button w-full text-left font-semibold p-3 rounded-lg bg-primary text-white">Datos Generales</button>
+                             <button data-tab="seguimiento" class="tab-button w-full text-left font-semibold p-3 rounded-lg hover:bg-gray-100">Seguimiento</button>
+                             <button data-tab="bitacora" class="tab-button w-full text-left font-semibold p-3 rounded-lg hover:bg-gray-100">Bitácora de Visitas</button>
+                             <button data-tab="adicionales" class="tab-button w-full text-left font-semibold p-3 rounded-lg hover:bg-gray-100">Datos Adicionales</button>
+                             <button data-tab="alerta" class="tab-button w-full text-left font-semibold p-3 rounded-lg hover:bg-gray-100 text-yellow-600">Alerta</button>
+                        </div>
+                    </div>
+                    <!-- Columna de Contenido -->
+                    <div class="md:col-span-3">
+                        <div id="tabContentDatosGenerales" class="tab-content">
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Resumen del Registro</h3>
+                            <div class="bg-gray-50 p-6 rounded-lg border space-y-4">
+                                <p><strong>Sexo Aparente:</strong> <span id="detalleSexo"></span></p>
+                                <p><strong>Rango de Edad:</strong> <span id="detalleEdad"></span></p>
+                                <p><strong>Fecha de Primer Contacto:</strong> <span id="detalleFecha"></span></p>
+                                <p><strong>Ubicación del Primer Contacto:</strong> <span id="detalleUbicacion"></span></p>
+                            </div>
+                        </div>
+                         <div id="tabContentSeguimiento" class="tab-content hidden">
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Módulos de Seguimiento</h3>
+                            <div class="space-y-3">
+                                <button data-target="screenFormularioA" class="nav-button w-full text-left bg-gray-100 p-4 rounded-lg hover:bg-gray-200">Aproximación Inicial</button>
+                                <button data-target="screenDesarrolloCuidados" class="nav-button w-full text-left bg-gray-100 p-4 rounded-lg hover:bg-gray-200">Desarrollo de Cuidados</button>
+                                <button data-target="screenPlanDeVida" class="nav-button w-full text-left bg-gray-100 p-4 rounded-lg hover:bg-gray-200">Plan de Vida</button>
+                            </div>
+                        </div>
+                        <div id="tabContentBitacora" class="tab-content hidden">
+                             <h3 class="text-xl font-semibold mb-4 text-gray-800">Bitácora de Visitas</h3>
+                             <div class="bg-gray-50 p-6 rounded-lg border space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <input type="text" id="bitacoraFecha" readonly class="w-full px-4 py-2 border bg-gray-100 border-gray-300 rounded-lg" value="30/09/2025 11:16 AM">
+                                    <input type="text" value="Brigadista 1, Brigadista 2" readonly class="w-full px-4 py-2 border bg-gray-100 border-gray-300 rounded-lg">
+                                </div>
+                                
+                                <textarea placeholder="Observaciones generales..." rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg"></textarea>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                     <fieldset>
+                                        <legend class="text-md font-semibold mb-2 text-gray-700">Estado de salud observado</legend>
+                                        <div class="space-y-2">
+                                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Aparentemente estable</label>
+                                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Heridas visibles</label>
+                                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Comportamiento alterado</label>
+                                        </div>
+                                    </fieldset>
+                                     <fieldset>
+                                        <legend class="text-md font-semibold mb-2 text-gray-700">Servicios proporcionados</legend>
+                                        <div class="space-y-2">
+                                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Agua</label>
+                                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Comida</label>
+                                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Cobija / Abrigo</label>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <textarea placeholder="Incidentes relevantes..." rows="2" class="w-full px-4 py-2 border border-gray-300 rounded-lg"></textarea>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                                    <fieldset>
+                                        <legend class="text-md font-semibold mb-2 text-gray-700">Reacción de la persona</legend>
+                                        <div class="flex space-x-4">
+                                            <label class="flex items-center"><input type="radio" name="reaccion" class="h-4 w-4 text-primary mr-2">Aceptación</label>
+                                            <label class="flex items-center"><input type="radio" name="reaccion" class="h-4 w-4 text-primary mr-2">Rechazo</label>
+                                            <label class="flex items-center"><input type="radio" name="reaccion" class="h-4 w-4 text-primary mr-2">Parcial</label>
+                                        </div>
+                                    </fieldset>
+                                    <div>
+                                        <label class="block text-md font-semibold mb-2 text-gray-700">Próxima visita sugerida</label>
+                                        <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                                    </div>
+                                </div>
+                                <div class="flex justify-end">
+                                    <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Bitácora</button>
+                                </div>
+                             </div>
+                        </div>
+                        <div id="tabContentAdicionales" class="tab-content hidden">
+                            <h3 class="text-xl font-semibold mb-4 text-gray-800">Datos Adicionales</h3>
+                            <div class="text-center p-8 bg-gray-50 rounded-lg border">
+                                <p class="mb-4">Información detallada sobre situación familiar, educación, laboral y consumo de sustancias.</p>
+                                <button data-target="screenDatosAdicionales" class="nav-button btn-primary text-white font-bold py-3 px-6 rounded-lg">
+                                    Abrir Módulo de Datos Adicionales
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="mt-8 pt-6 border-t flex justify-start">
+                    <button data-target="screenBusqueda" type="button" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver a Búsqueda</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. DATOS ADICIONALES -->
+        <div id="screenDatosAdicionales" class="screen w-full max-w-6xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full">
+                <div class="border-b pb-4 mb-6">
+                    <h2 class="text-2xl font-bold text-primary">Módulo de Datos Adicionales</h2>
+                    <p class="text-gray-600">Registro detallado de la persona.</p>
+                </div>
+                <!-- Encabezado con datos de la persona -->
+                <div class="bg-gray-100 p-4 rounded-lg mb-6 flex justify-between items-center flex-wrap gap-4">
+                    <div>
+                        <p class="font-bold text-xl" id="adicionalesNombre"></p>
+                        <p class="font-mono text-gray-600" id="adicionalesID"></p>
+                    </div>
+                    <div class="flex space-x-6 text-sm">
+                        <p><strong>Edad:</strong> <span id="adicionalesEdad"></span></p>
+                        <p><strong>Sexo:</strong> <span id="adicionalesSexo"></span></p>
+                        <p><strong>Registro:</strong> <span id="adicionalesFecha"></span></p>
+                    </div>
+                </div>
+
+                <!-- Navegación de Pestañas Internas -->
+                <div class="mb-6 border-b">
+                    <nav id="adicionalesTabs" class="flex space-x-4 -mb-px">
+                        <button data-form="familiar" class="adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-primary border-primary">Situación Familiar</button>
+                        <button data-form="educacion" class="adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Educación</button>
+                        <button data-form="drogas" class="adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Consumo de Drogas</button>
+                        <button data-form="laboral" class="adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300">Situación Laboral</button>
+                    </nav>
+                </div>
+
+                <!-- Formularios -->
+                <div id="formFamiliar" class="adicionales-form space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800">Situación Familiar</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Estado Civil -->
+                        <fieldset>
+                            <label for="estadoCivil" class="block text-sm font-medium text-gray-700">Estado Civil</label>
+                            <select id="estadoCivil" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <option>Soltero/a</option>
+                                <option>Casado/a</option>
+                                <option>Separado/a</option>
+                                <option>Viudo/a</option>
+                            </select>
+                        </fieldset>
+
+                        <!-- Personas Dependientes -->
+                        <fieldset>
+                            <label for="personasDependientes" class="block text-sm font-medium text-gray-700">Personas Dependientes</label>
+                            <input type="text" id="personasDependientes" placeholder="Ej: 2 hijos, madre" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                        </fieldset>
+
+                        <!-- Contacto con Familia -->
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Tiene contacto con su familia?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="contactoFamilia" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="contactoFamilia" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Frecuencia de Contacto -->
+                        <fieldset>
+                            <label for="frecuenciaContacto" class="block text-sm font-medium text-gray-700">Frecuencia de Contacto</label>
+                            <select id="frecuenciaContacto" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <option>Diaria</option>
+                                <option>Semanal</option>
+                                <option>Ocasional</option>
+                                <option>Nunca</option>
+                            </select>
+                        </fieldset>
+
+                        <!-- Desea Restablecer Lazos -->
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Desea restablecer lazos?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="restablecerLazos" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="restablecerLazos" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+
+                        <!-- Apoyo Familiar Actual -->
+                         <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Recibe apoyo familiar actual?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="apoyoFamiliar" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="apoyoFamiliar" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Conflictos Familiares -->
+                    <fieldset>
+                        <legend class="text-sm font-medium text-gray-700">Conflictos Familiares (Selección múltiple)</legend>
+                        <div class="mt-2 grid grid-cols-2 md:grid-cols-3 gap-2">
+                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Violencia</label>
+                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Abandono</label>
+                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Despojo</label>
+                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Discriminación</label>
+                            <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Otro</label>
+                        </div>
+                    </fieldset>
+
+                    <!-- Descripción Apoyo Familiar -->
+                    <fieldset>
+                        <label for="descripcionApoyo" class="block text-sm font-medium text-gray-700">Descripción del Apoyo Familiar Actual</label>
+                        <textarea id="descripcionApoyo" rows="3" placeholder="Describa el tipo de apoyo recibido..." class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                    </fieldset>
+                    
+                    <div class="flex justify-end">
+                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Situación Familiar</button>
+                    </div>
+                </div>
+                <div id="formEducacion" class="adicionales-form hidden space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800">Educación</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Último Grado Escolar -->
+                        <fieldset>
+                            <label for="gradoEscolar" class="block text-sm font-medium text-gray-700">Último Grado Escolar</label>
+                            <select id="gradoEscolar" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <option>Sin estudios</option>
+                                <option>Primaria</option>
+                                <option>Secundaria</option>
+                                <option>Preparatoria</option>
+                                <option>Universidad</option>
+                            </select>
+                        </fieldset>
+                
+                        <!-- Alfabetización -->
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Sabe leer y escribir?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="alfabetizacion" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="alfabetizacion" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+                
+                        <!-- Cuenta con Certificados -->
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Cuenta con certificados?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="certificados" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="certificados" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+                
+                        <!-- Interés en Estudios -->
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Interés en continuar estudios?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="interesEstudios" value="si" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="interesEstudios" value="no" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                
+                    <!-- Nivel de Interés (condicional) -->
+                    <fieldset id="campoNivelInteres" class="hidden">
+                        <label for="nivelInteres" class="block text-sm font-medium text-gray-700">¿Qué nivel le interesaría?</label>
+                        <input type="text" id="nivelInteres" placeholder="Ej: terminar la secundaria, un taller..." class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                    </fieldset>
+                
+                    <!-- Habilidades Autodidactas -->
+                    <fieldset>
+                        <label for="habilidadesAutodidactas" class="block text-sm font-medium text-gray-700">Habilidades Autodidactas</label>
+                        <textarea id="habilidadesAutodidactas" rows="3" placeholder="Describa habilidades aprendidas por cuenta propia..." class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                    </fieldset>
+                
+                    <!-- Programas Educativos Previos -->
+                    <fieldset>
+                        <label for="programasPrevios" class="block text-sm font-medium text-gray-700">Programas Educativos Previos</label>
+                        <input type="text" id="programasPrevios" placeholder="Ej: INEA, talleres, capacitaciones, otro" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                    </fieldset>
+                
+                    <div class="flex justify-end">
+                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Educación</button>
+                    </div>
+                </div>
+                <div id="formDrogas" class="adicionales-form hidden space-y-6">
+                    <h3 class="text-lg font-semibold text-gray-800">Consumo de Sustancias</h3>
+                    
+                    <!-- Sustancias y Vía de Consumo -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">Sustancias Consumidas</legend>
+                            <div class="mt-2 grid grid-cols-2 gap-2">
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Alcohol</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Marihuana</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Solventes</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Cocaína</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Metanfetaminas</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Otras</label>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">Vía de Consumo</legend>
+                            <div class="mt-2 grid grid-cols-2 gap-2">
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Oral</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Inhalado</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Inyectado</label>
+                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Otro</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    
+                    <!-- Frecuencia y Edad de Inicio -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <fieldset>
+                             <label for="frecuenciaConsumo" class="block text-sm font-medium text-gray-700">Frecuencia de Consumo</label>
+                             <select id="frecuenciaConsumo" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                 <option>Diaria</option>
+                                 <option>Semanal</option>
+                                 <option>Ocasional</option>
+                                 <option>Dejó de consumir</option>
+                             </select>
+                        </fieldset>
+                        <fieldset>
+                             <label for="edadInicioConsumo" class="block text-sm font-medium text-gray-700">Edad de Inicio de Consumo</label>
+                             <input type="number" id="edadInicioConsumo" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                        </fieldset>
+                    </div>
+                    
+                    <!-- Motivos de Consumo -->
+                    <fieldset>
+                        <label for="motivosConsumo" class="block text-sm font-medium text-gray-700">Motivos de Consumo</label>
+                        <textarea id="motivosConsumo" rows="3" placeholder="Describa los motivos..." class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"></textarea>
+                    </fieldset>
+
+                    <!-- Preguntas Sí/No -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Episodios de sobredosis?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="episodiosSobredosis" value="si" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="episodiosSobredosis" value="no" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+                        <fieldset id="campoVecesSobredosis" class="hidden">
+                             <label for="vecesSobredosis" class="block text-sm font-medium text-gray-700">Número de veces</label>
+                             <input type="number" id="vecesSobredosis" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend class="text-sm font-medium text-gray-700">¿Ha tenido tratamiento previo?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="tratamientoPrevio" value="si" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="tratamientoPrevio" value="no" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+                         <fieldset id="campoEspecificarTratamiento" class="hidden">
+                             <label for="especificarTratamiento" class="block text-sm font-medium text-gray-700">Especificar tratamiento</label>
+                             <input type="text" id="especificarTratamiento" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                        </fieldset>
+
+                        <fieldset class="md:col-span-2">
+                            <legend class="text-sm font-medium text-gray-700">¿Tiene interés en recibir atención?</legend>
+                            <div class="mt-2 flex space-x-4">
+                                <label class="flex items-center"><input type="radio" name="interesAtencion" class="h-4 w-4 text-primary mr-2">Sí</label>
+                                <label class="flex items-center"><input type="radio" name="interesAtencion" class="h-4 w-4 text-primary mr-2">No</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Consumo de Drogas</button>
+                    </div>
+                </div>
+                <div id="formLaboral" class="adicionales-form hidden space-y-4">
+                     <h3 class="text-lg font-semibold">Situación Laboral</h3>
+                    <!-- Campos de situación laboral -->
+                    <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Situación Laboral</button>
+                </div>
+
+                <div class="mt-8 pt-6 border-t flex justify-between items-center">
+                    <button data-target="screenDetallePersona" type="button" class="nav-button bg-gray-200 text-gray-700 font-bold py-2 px-4 rounded-lg">Volver a Detalle</button>
+                    <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg">Guardar Todo</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <!-- MODAL ALERTA ATENCIÓN INMEDIATA -->
+    <div id="modalAtencion" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-8 text-center">
+            <i data-lucide="alert-triangle" class="mx-auto h-16 w-16 text-yellow-500 mb-4"></i>
+            <h3 class="text-2xl font-bold mb-2">Atención Inmediata</h3>
+            <p class="text-gray-600 mb-6">¿La persona requiere atención inmediata?</p>
+            <div class="flex justify-center space-x-4">
+                <button id="btnAtencionSi" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-6 rounded-lg">Sí, requiere</button>
+                <button id="btnAtencionNo" class="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ALERTA DETALLADA -->
+    <div id="modalAlertaDetallada" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg p-8">
+            <div class="flex justify-between items-center mb-4">
+                 <h3 class="text-2xl font-bold text-primary">Detalles de la Alerta de Emergencia</h3>
+                 <button id="btnCerrarAlertaDetallada" class="text-gray-400 hover:text-gray-600">&times;</button>
+            </div>
+            <div class="space-y-6">
+                <fieldset>
+                    <legend class="text-md font-semibold mb-2 text-gray-700">¿Pertenece a población de Alta Vulnerabilidad?</legend>
+                    <div class="space-y-2">
+                        <label class="flex items-center"><input type="radio" name="vulnerabilidad" class="h-4 w-4 text-primary mr-2">Mujer sola</label>
+                        <label class="flex items-center"><input type="radio" name="vulnerabilidad" class="h-4 w-4 text-primary mr-2">Mujer con infantes</label>
+                        <label class="flex items-center"><input type="radio" name="vulnerabilidad" class="h-4 w-4 text-primary mr-2">Infancia no acompañada</label>
+                        <label class="flex items-center"><input type="radio" name="vulnerabilidad" class="h-4 w-4 text-primary mr-2">No</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend class="text-md font-semibold mb-2 text-gray-700">Tipo de emergencia</legend>
+                     <div class="space-y-2">
+                        <label class="flex items-center"><input type="radio" name="emergencia" class="h-4 w-4 text-primary mr-2">Lesión o padecimiento que pone en riesgo la vida</label>
+                        <label class="flex items-center"><input type="radio" name="emergencia" class="h-4 w-4 text-primary mr-2">Crisis de salud mental</label>
+                        <label class="flex items-center"><input type="radio" name="emergencia" class="h-4 w-4 text-primary mr-2">Violencia</label>
+                    </div>
+                </fieldset>
+                <div>
+                     <label for="detallesAlerta" class="text-md font-semibold mb-2 text-gray-700 block">Proporcione más detalles</label>
+                     <textarea id="detallesAlerta" rows="3" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2"></textarea>
+                </div>
+                <div class="flex justify-between pt-4">
+    <button id="btnCancelarAlerta" class="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg">
+        Cancelar
+    </button>
+    <button id="btnEnviarAlerta" class="btn-primary text-white font-bold py-2 px-6 rounded-lg flex items-center space-x-2">
+        <i data-lucide="send" class="icon"></i>
+        <span>Enviar Alerta</span>
+    </button>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONSULTAR CUIDADO -->
+    <div id="modalConsultarCuidado" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg p-8">
+             <h3 id="modalConsultarTitle" class="text-2xl font-bold mb-6 text-primary text-center">Consultar Solicitud</h3>
+             <div class="space-y-4">
+                <div>
+                    <label class="font-medium text-gray-700">Responsable</label>
+                    <input type="text" class="w-full mt-1 px-4 py-2 border bg-gray-100 border-gray-300 rounded-lg" value="Juan Pérez (Ejemplo)" readonly>
+                </div>
+                 <div class="grid grid-cols-2 gap-4">
+                    <div>
+                         <label class="font-medium text-gray-700">Fecha</label>
+                         <input type="date" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg">
+                    </div>
+                     <div>
+                         <label class="font-medium text-gray-700">Hora</label>
+                         <input type="time" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg">
+                    </div>
+                 </div>
+                 <div>
+                    <label class="font-medium text-gray-700">Solución</label>
+                    <textarea rows="4" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg" placeholder="Describa la solución o el resultado de la atención..."></textarea>
+                 </div>
+             </div>
+             <div class="flex justify-between items-center mt-8 pt-4 border-t">
+                 <button id="btnCerrarConsultar" class="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg">Cerrar</button>
+                 <button id="btnAsignarCerrar" class="btn-primary text-white font-bold py-2 px-6 rounded-lg hidden">Asignar y Cerrar</button>
+             </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentPerson = null;
+
+            // --- LÓGICA DE NAVEGACIÓN ---
+            const navigateTo = (screenId, personData = null) => {
+                if (personData) {
+                    currentPerson = personData;
+                }
+
+                document.querySelectorAll('.screen').forEach(screen => {
+                    screen.classList.remove('active-screen');
+                });
+                const targetScreen = document.getElementById(screenId);
+                if (targetScreen) {
+                    targetScreen.classList.add('active-screen');
+                }
+            };
+
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetScreen = button.dataset.target;
+                    if(targetScreen) navigateTo(targetScreen);
+                });
+            });
+
+            // --- LÓGICA TIPO DE ATENCIÓN ---
+            document.getElementById('btnContinuarAtencion').addEventListener('click', () => {
+                const tipoSeleccionado = document.querySelector('input[name="tipoAtencion"]:checked');
+                if (tipoSeleccionado) {
+                    if (tipoSeleccionado.value === 'calle') {
+                        navigateTo('screenOpcionesCalle');
+                    } else {
+                        alert('La sección "Atención en Albergue" aún no está implementada.');
+                    }
+                } else {
+                    alert('Por favor, selecciona un tipo de atención.');
+                }
+            });
+
+            // --- LÓGICA FORMULARIO A ---
+            const numBrigadaSlider = document.getElementById('numBrigada');
+            const numBrigadaValue = document.getElementById('numBrigadaValue');
+            if (numBrigadaSlider) {
+                numBrigadaSlider.addEventListener('input', (e) => {
+                    numBrigadaValue.textContent = e.target.value;
+                });
+            }
+
+             const fechaHoraInput = document.getElementById('fechaHora');
+             if(fechaHoraInput) {
+                const now = new Date();
+                fechaHoraInput.value = now.toLocaleString('es-MX');
+             }
+
+            document.querySelectorAll('input[name="identificado"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const esSi = e.target.value === 'si';
+                    document.getElementById('camposIdentificadoSi').classList.toggle('hidden', !esSi);
+                    document.getElementById('camposIdentificadoNo').classList.toggle('hidden', esSi);
+                });
+            });
+
+            const generaClaveUnica = (nombre, apellido1, apellido2) => {
+                 let clave = "";
+                 const fecha = new Date();
+                 const d = String(fecha.getDate()).padStart(2, '0');
+                 const m = String(fecha.getMonth() + 1).padStart(2, '0');
+                 const a = fecha.getFullYear();
+                 const consecutivo = String(Math.floor(Math.random() * 900) + 100);
+
+                 if (nombre && apellido1) {
+                     clave += apellido1.substring(0, 2).toUpperCase();
+                     clave += (apellido2 ? apellido2.substring(0, 1).toUpperCase() : 'X');
+                     clave += nombre.substring(0, 1).toUpperCase();
+                 } else if (nombre) {
+                     clave += nombre.substring(0, 2).toUpperCase();
+                     clave += 'XX';
+                 }
+                 clave += `${d}${m}${a}${consecutivo}`;
+                 return clave;
+            };
+
+            const modal = document.getElementById('modalAtencion');
+            const modalDetallada = document.getElementById('modalAlertaDetallada');
+
+            document.getElementById('btnGuardarA').addEventListener('click', () => {
+                const esIdentificado = document.querySelector('input[name="identificado"]:checked')?.value === 'si';
+                let clave;
+                if(esIdentificado) {
+                    const nombre = document.getElementById('nombre').value;
+                    const ap1 = document.getElementById('primerApellido').value;
+                    const ap2 = document.getElementById('segundoApellido').value;
+                    if(!nombre || !ap1) { alert("Nombre y Primer Apellido son obligatorios."); return; }
+                    clave = generaClaveUnica(nombre, ap1, ap2);
+                } else {
+                    const apodo = document.getElementById('apodo').value;
+                    if(!apodo) { alert("El nombre o apodo es obligatorio."); return; }
+                    clave = generaClaveUnica(apodo, null, null);
+                }
+                document.getElementById('claveUnicaResultado').textContent = clave;
+                document.getElementById('claveUnicaContainer').classList.remove('hidden');
+                
+                setTimeout(() => modal.classList.remove('hidden'), 300);
+            });
+            
+            document.getElementById('btnAtencionNo').addEventListener('click', () => {
+                modal.classList.add('hidden');
+                navigateTo('screenFormularioB');
+            });
+
+            document.getElementById('btnAtencionSi').addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modalDetallada.classList.remove('hidden');
+            });
+
+            document.getElementById('btnEnviarAlerta').addEventListener('click', () => {
+                modalDetallada.classList.add('hidden');
+                alert("ALERTA ENVIADA: Se ha notificado al equipo de emergencia con los detalles proporcionados.");
+                navigateTo('screenFormularioB');
+            });
+            
+            document.getElementById('btnCerrarAlertaDetallada').addEventListener('click', () => {
+                modalDetallada.classList.add('hidden');
+            });
+            document.getElementById('btnCancelarAlerta').addEventListener('click', () => {
+    modalDetallada.classList.add('hidden');
+    navigateTo('screenFormularioB');
+});
+
+            
+            document.getElementById('btnGuardarFinal').addEventListener('click', () => {
+                alert("Registro completo guardado exitosamente.");
+                document.getElementById('formA').reset();
+                document.getElementById('claveUnicaContainer').classList.add('hidden');
+                document.getElementById('camposIdentificadoSi').classList.add('hidden');
+                document.getElementById('camposIdentificadoNo').classList.add('hidden');
+                navigateTo('screenPrincipal');
+            });
+
+            // --- LÓGICA DESARROLLO DE CUIDADOS ---
+            const dependenciasInmediatas = [
+                'Secretaría de Salud', 'Comedores Comunitarios', 'Emergencia Social', 'UTOPIAS', 'Unidad de Atención Diurna'
+            ];
+            const cuidadosInmediatos = [
+                { id: 'alim', nombre: 'Alimentación', deps: dependenciasInmediatas }, { id: 'higi', nombre: 'Higiene', deps: dependenciasInmediatas }, { id: 'docu', nombre: 'Documentación', deps: dependenciasInmediatas }, { id: 'movi', nombre: 'Bienes de Movilidad Asistida', deps: dependenciasInmediatas }
+            ];
+            const cuidadosMedianoPlazo = [
+                { id: 'cmed', nombre: 'Consulta Médica', deps: ['Secretaría de Salud (Consulta Médica)'] }, { id: 'psic', nombre: 'Consulta Psicológica', deps: ['Secretaría de Salud (Consulta Psicológica)'] }, { id: 'docm', nombre: 'Documentación', deps: ['Consejería Jurídica (Documentación)'] }, { id: 'adic', nombre: 'Tratamiento contra las adicciones', deps: ['IAPA (tratamiento ambulatorio para las adicciones)'] }, { id: 'lfam', nombre: 'Reconstrucción de lazos familiares', deps: ['Fiscalía (Reunificación Familiar)'] }, { id: 'hlab', nombre: 'Habilidades laborales', deps: ['STYFE (Talleres / Habilidades laborales)'] }, { id: 'erec', nombre: 'Eventos recreativos', deps: ['PILARES / INDEPORTE (Actividades recreativas)'] }
+            ];
+
+            const createCareItemHTML = (item) => {
+                const depOptions = item.deps.map(dep => `<option value="${dep}">${dep}</option>`).join('');
+                return `
+                <div class="bg-gray-50 p-4 rounded-lg border">
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold text-gray-800">${item.nombre}</span>
+                        <div class="flex items-center space-x-2">
+                            <label for="solicitud-${item.id}" class="text-sm">Solicitud Hecha:</label>
+                            <div class="relative inline-block w-10 align-middle select-none">
+                                <input type="checkbox" name="solicitud-${item.id}" id="solicitud-${item.id}" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer solicitud-toggle"/>
+                                <label for="solicitud-${item.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="details-container hidden mt-4 pt-4 border-t space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Dependencia Responsable</label>
+                                <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">${depOptions}</select>
+                            </div>
+                             <div>
+                                <label class="block text-sm font-medium text-gray-700">Nombre de Enlace</label>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Buscar enlace...">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Estatus Solicitud</label>
+                            <div class="flex flex-wrap gap-2 status-buttons">
+                                <button class="bg-yellow-200 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full">Pendiente</button>
+                                <button class="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">Atendida</button>
+                                <button class="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">Cancelada</button>
+                                <button data-item-name="${item.nombre}" class="consultar-btn bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full flex items-center gap-1">
+                                    Consultar <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            };
+
+            const immediateContainer = document.getElementById('cuidadosInmediatosContainer');
+            const mediumTermContainer = document.getElementById('cuidadosMedianoPlazoContainer');
+            if(immediateContainer && mediumTermContainer){
+                immediateContainer.innerHTML = cuidadosInmediatos.map(createCareItemHTML).join('');
+                mediumTermContainer.innerHTML = cuidadosMedianoPlazo.map(createCareItemHTML).join('');
+            }
+            
+            document.getElementById('app-container').addEventListener('change', (e) => {
+                if(e.target.classList.contains('solicitud-toggle')) {
+                    const details = e.target.closest('.bg-gray-50').querySelector('.details-container');
+                    details.classList.toggle('hidden', !e.target.checked);
+                }
+            });
+            
+            document.getElementById('app-container').addEventListener('click', (e) => {
+                 if (e.target.closest('.status-buttons') && e.target.tagName === 'BUTTON' && !e.target.classList.contains('consultar-btn')) {
+                    const group = e.target.closest('.status-buttons');
+                    group.querySelectorAll('button:not(.consultar-btn)').forEach(btn => {
+                        btn.className = 'bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full';
+                    });
+                    const status = e.target.textContent.trim();
+                    if(status === 'Pendiente') e.target.classList.add('bg-yellow-200', 'text-yellow-800');
+                    else if(status === 'Atendida') e.target.classList.add('bg-green-200', 'text-green-800');
+                    else if(status === 'Cancelada') e.target.classList.add('bg-red-200', 'text-red-800');
+                }
+
+                if(e.target.closest('.consultar-btn')) {
+                    const btn = e.target.closest('.consultar-btn');
+                    const itemName = btn.dataset.itemName;
+                    document.getElementById('modalConsultarTitle').textContent = `Consultar Solicitud: ${itemName}`;
+                    btnAsignarCerrar.classList.toggle('hidden', !rolEnlaceToggle.checked);
+                    modalConsultar.classList.remove('hidden');
+                }
+            });
+            
+            const modalConsultar = document.getElementById('modalConsultarCuidado');
+            const btnAsignarCerrar = document.getElementById('btnAsignarCerrar');
+            const rolEnlaceToggle = document.getElementById('rolEnlace');
+
+            if(rolEnlaceToggle) rolEnlaceToggle.addEventListener('change', () => btnAsignarCerrar.classList.toggle('hidden', !rolEnlaceToggle.checked));
+            if(modalConsultar) document.getElementById('btnCerrarConsultar').addEventListener('click', () => modalConsultar.classList.add('hidden'));
+
+            // --- LÓGICA PLAN DE VIDA ---
+            const planDeVidaItems = [
+                { id: 'addic', nombre: 'Programa Erradicación Adicciones' }, { id: 'capvida', nombre: 'Fortalecimiento Capacidades para la Vida' }, { id: 'habtrab', nombre: 'Fortalecimiento Habilidades para el Trabajo' }, { id: 'reinfam', nombre: 'Reintegración Familiar' }
+            ];
+
+            const createPlanItemHTML = (item) => {
+                let extraFields = (item.id === 'reinfam') ? `
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium text-gray-700">Nombre del Contacto Familiar</label>
+                        <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Ej: Maria López (Madre)...">
+                    </div>` : '';
+
+                return `
+                <div class="bg-gray-50 p-4 rounded-lg border">
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold text-gray-800">${item.nombre}</span>
+                        <div class="flex items-center space-x-2">
+                            <label for="plan-${item.id}" class="text-sm">¿Incluir en el Plan?:</label>
+                            <div class="relative inline-block w-10 align-middle select-none">
+                                <input type="checkbox" name="plan-${item.id}" id="plan-${item.id}" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer plan-toggle"/>
+                                <label for="plan-${item.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-details-container hidden mt-4 pt-4 border-t space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Estatus</label>
+                                <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    <option>No iniciado</option> <option>En proceso</option> <option>Completado</option> <option>Rechazado</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Institución Responsable</label>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Ej: IAPA, STYFE...">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Fecha de Inicio</label>
+                                <input type="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Observaciones</label>
+                            <textarea class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" rows="3" placeholder="Añadir metas, notas o comentarios..."></textarea>
+                        </div>
+                        ${extraFields}
+                    </div>
+                </div>`;
+            };
+            
+            const planContainer = document.getElementById('planDeVidaContainer');
+            if(planContainer){
+                planContainer.innerHTML = planDeVidaItems.map(createPlanItemHTML).join('');
+                document.querySelectorAll('.plan-toggle').forEach(toggle => {
+                    toggle.addEventListener('change', (e) => {
+                        const details = e.target.closest('.bg-gray-50').querySelector('.plan-details-container');
+                        details.classList.toggle('hidden', !e.target.checked);
+                    });
+                });
+            }
+
+            // --- LÓGICA BÚSQUEDA DE PERSONA ---
+            const mockData = [
+                {id: 'PEGA25092025123', nombre: 'Alejandro', apellido1: 'Perez', apellido2: 'Garcia', sexo: 'Hombre', edad: '26-35 años', fecha: '25/09/2025', ubicacion: 'Metro Hidalgo'},
+                {id: 'ROXM15082025456', nombre: 'Maria', apellido1: 'Rojas', apellido2: 'Martinez', sexo: 'Mujer', edad: '36-50 años', fecha: '15/08/2025', ubicacion: 'Alameda Central'},
+                {id: 'GOJF01072025789', nombre: 'Francisco Javier', apellido1: 'Gonzalez', apellido2: 'Juarez', sexo: 'Hombre', edad: '18-25 años', fecha: '01/07/2025', ubicacion: 'Zócalo'},
+                {id: 'ALVP20092025321', nombre: 'Pedro', apellido1: 'Alvarez', apellido2: '', sexo: 'Hombre', edad: '+50 años', fecha: '20/09/2025', ubicacion: 'Metro Bellas Artes'},
+            ];
+            
+            const inputNombre = document.getElementById('inputBusquedaNombre');
+            const inputID = document.getElementById('inputBusquedaID');
+            const resultadosContainer = document.getElementById('resultadosBusqueda');
+
+            const renderResultados = (resultados) => {
+                if (resultados.length === 0) {
+                    resultadosContainer.innerHTML = `<p class="text-center text-gray-500 py-4">No se encontraron coincidencias.</p>`;
+                    return;
+                }
+                resultadosContainer.innerHTML = resultados.map(p => `
+                    <div class="p-4 border-b hover:bg-gray-50 cursor-pointer resultado-item" data-id="${p.id}">
+                        <p class="font-semibold text-lg text-primary">${p.nombre} ${p.apellido1} ${p.apellido2}</p>
+                        <p class="text-sm text-gray-600 font-mono">${p.id}</p>
+                    </div>
+                `).join('');
+            };
+
+            inputNombre.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                if (!query) { resultadosContainer.innerHTML = ''; return; }
+                const resultados = mockData.filter(p => `${p.nombre} ${p.apellido1} ${p.apellido2}`.toLowerCase().includes(query));
+                renderResultados(resultados);
+            });
+
+            inputID.addEventListener('input', (e) => {
+                const query = e.target.value.toUpperCase();
+                 if (!query) { resultadosContainer.innerHTML = ''; return; }
+                const resultados = mockData.filter(p => p.id.includes(query));
+                renderResultados(resultados);
+            });
+
+            document.querySelectorAll('input[name="tipoBusqueda"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const esNombre = e.target.value === 'nombre';
+                    document.getElementById('campoBusquedaNombre').classList.toggle('hidden', !esNombre);
+                    document.getElementById('campoBusquedaID').classList.toggle('hidden', esNombre);
+                    inputNombre.value = '';
+                    inputID.value = '';
+                    resultadosContainer.innerHTML = '';
+                });
+            });
+
+            // --- LÓGICA DETALLE DE PERSONA ---
+            resultadosContainer.addEventListener('click', (e) => {
+                const item = e.target.closest('.resultado-item');
+                if (item) {
+                    const personaId = item.dataset.id;
+                    const persona = mockData.find(p => p.id === personaId);
+                    if (persona) {
+                        navigateTo('screenDetallePersona', persona);
+                        document.getElementById('detallePersonaNombre').textContent = `${persona.nombre} ${persona.apellido1} ${persona.apellido2}`;
+                        document.getElementById('detallePersonaID').textContent = persona.id;
+                        document.getElementById('detalleSexo').textContent = persona.sexo;
+                        document.getElementById('detalleEdad').textContent = persona.edad;
+                        document.getElementById('detalleFecha').textContent = persona.fecha;
+                        document.getElementById('detalleUbicacion').textContent = persona.ubicacion;
+                        
+                        // Populate Adicionales Header
+                        document.getElementById('adicionalesNombre').textContent = `${persona.nombre} ${persona.apellido1} ${persona.apellido2}`;
+                        document.getElementById('adicionalesID').textContent = persona.id;
+                        document.getElementById('adicionalesSexo').textContent = persona.sexo;
+                        document.getElementById('adicionalesEdad').textContent = persona.edad;
+                        document.getElementById('adicionalesFecha').textContent = persona.fecha;
+                    }
+                }
+            });
+
+            const tabsContainer = document.querySelector('#screenDetallePersona .md\\:col-span-1');
+            if(tabsContainer) {
+                tabsContainer.addEventListener('click', e => {
+                    if(e.target.classList.contains('tab-button')) {
+                        tabsContainer.querySelectorAll('.tab-button').forEach(btn => {
+                            btn.classList.remove('bg-primary', 'text-white');
+                            btn.classList.add('hover:bg-gray-100');
+                        });
+                        e.target.classList.add('bg-primary', 'text-white');
+                        e.target.classList.remove('hover:bg-gray-100');
+
+                        const tabId = e.target.dataset.tab;
+                        
+                        if (tabId === 'alerta') {
+                            modalDetallada.classList.remove('hidden');
+                            return; // Don't switch tabs, just show modal
+                        }
+                        
+                        document.querySelectorAll('.tab-content').forEach(content => {
+                            content.classList.add('hidden');
+                        });
+                        const activeContent = document.getElementById(`tabContent${tabId.charAt(0).toUpperCase() + tabId.slice(1)}`);
+                        if(activeContent) activeContent.classList.remove('hidden');
+                    }
+                });
+            }
+
+            // --- LÓGICA DATOS ADICIONALES ---
+            const adicionalesTabs = document.getElementById('adicionalesTabs');
+            if(adicionalesTabs) {
+                 adicionalesTabs.addEventListener('click', e => {
+                    if(e.target.classList.contains('adicionales-tab-button')) {
+                        adicionalesTabs.querySelectorAll('.adicionales-tab-button').forEach(btn => {
+                            btn.className = 'adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300';
+                        });
+                        e.target.className = 'adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-primary border-primary';
+
+                        const formId = e.target.dataset.form;
+                        document.querySelectorAll('.adicionales-form').forEach(form => {
+                            form.classList.add('hidden');
+                        });
+                         const activeForm = document.getElementById(`form${formId.charAt(0).toUpperCase() + formId.slice(1)}`);
+                        if(activeForm) activeForm.classList.remove('hidden');
+                    }
+                 });
+            }
+            
+            // Lógica para el campo condicional en el formulario de Educación
+            document.querySelectorAll('input[name="interesEstudios"]').forEach(radio => {
+                radio.addEventListener('change', e => {
+                    const campoNivel = document.getElementById('campoNivelInteres');
+                    if (e.target.value === 'si') {
+                        campoNivel.classList.remove('hidden');
+                    } else {
+                        campoNivel.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Lógica para campos condicionales en Consumo de Drogas
+            document.querySelectorAll('input[name="episodiosSobredosis"]').forEach(radio => {
+                radio.addEventListener('change', e => {
+                    const campoVeces = document.getElementById('campoVecesSobredosis');
+                    if (e.target.value === 'si') {
+                        campoVeces.classList.remove('hidden');
+                    } else {
+                        campoVeces.classList.add('hidden');
+                    }
+                });
+            });
+
+            document.querySelectorAll('input[name="tratamientoPrevio"]').forEach(radio => {
+                radio.addEventListener('change', e => {
+                    const campoEspecificar = document.getElementById('campoEspecificarTratamiento');
+                    if (e.target.value === 'si') {
+                        campoEspecificar.classList.remove('hidden');
+                    } else {
+                        campoEspecificar.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Iniciar en la pantalla de login
+            navigateTo('screenLogin');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
+
+
