@@ -16,8 +16,7 @@
         }
         .screen {
             display: none;
-            animation: fadeIn 0.3s;
-            padding: 1rem; /* Padding for smaller screens */
+            animation: fadeIn 0.5s;
         }
         .active-screen {
             display: flex;
@@ -55,12 +54,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
 
     <div id="app-container" class="w-full">
         <!-- 1. PANTALLA DE LOGIN -->
-        <div id="screenLogin" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg text-center w-full max-w-sm">
+        <div id="screenLogin" class="screen w-full max-w-sm mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
                 <i data-lucide="shield-check" class="mx-auto h-16 w-16 text-primary mb-4"></i>
                 <h1 class="text-3xl font-bold text-gray-800 mb-2">Acceso al Sistema</h1>
                 <p class="text-gray-500 mb-8">Por favor, ingrese sus credenciales.</p>
@@ -80,8 +79,8 @@
         </div>
 
         <!-- 2. PANTALLA PRINCIPAL -->
-        <div id="screenPrincipal" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg text-center w-full max-w-md">
+        <div id="screenPrincipal" class="screen w-full max-w-md mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
                 <h2 class="text-3xl font-bold text-primary mb-8">Menú Principal</h2>
                 <div class="space-y-4">
                     <button data-target="screenTipoAtencion" class="nav-button w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex items-center space-x-4 text-left">
@@ -107,8 +106,8 @@
         </div>
         
         <!-- 3. TIPO DE ATENCIÓN -->
-        <div id="screenTipoAtencion" class="screen w-full justify-center items-center">
-             <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-lg">
+        <div id="screenTipoAtencion" class="screen w-full max-w-lg mx-auto">
+             <div class="bg-white p-8 rounded-xl shadow-lg">
                 <h2 class="text-2xl font-bold text-primary mb-6">Nuevo Registro</h2>
                 <p class="mb-4">Seleccione el tipo de atención:</p>
                 <div class="space-y-4">
@@ -127,8 +126,8 @@
         </div>
 
         <!-- 4. OPCIONES ATENCIÓN EN CALLE -->
-        <div id="screenOpcionesCalle" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg text-center w-full max-w-lg">
+        <div id="screenOpcionesCalle" class="screen w-full max-w-lg mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
                 <h2 class="text-2xl font-bold text-primary mb-6">Atención en Calle</h2>
                 <div class="space-y-4">
                     <button data-target="screenFormularioA" class="nav-button w-full bg-gray-100 hover:bg-gray-200 p-4 rounded-lg font-semibold text-lg">Aproximación Inicial</button>
@@ -142,8 +141,8 @@
         </div>
 
         <!-- 5. FORMULARIO A: APROXIMACIÓN INICIAL -->
-        <div id="screenFormularioA" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl">
+        <div id="screenFormularioA" class="screen w-full max-w-4xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
                 <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Módulo A: Aproximación Inicial</h2>
                 <form id="formA" class="space-y-8">
                     <!-- Sección Brigada y Fecha -->
@@ -236,8 +235,8 @@
         </div>
 
         <!-- 6. FORMULARIO B -->
-        <div id="screenFormularioB" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl">
+        <div id="screenFormularioB" class="screen w-full max-w-4xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg">
                 <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Módulo B: Necesidades y Contexto</h2>
                 <form class="space-y-8">
                      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -294,8 +293,8 @@
         </div>
 
         <!-- 7. DESARROLLO DE CUIDADOS -->
-        <div id="screenDesarrolloCuidados" class="screen w-full justify-center items-center">
-             <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-5xl">
+        <div id="screenDesarrolloCuidados" class="screen w-full max-w-5xl mx-auto">
+             <div class="bg-white p-8 rounded-xl shadow-lg">
                 <div class="flex justify-between items-center mb-6 border-b pb-4">
                     <h2 class="text-2xl font-bold text-primary">Desarrollo de Cuidados</h2>
                     <div class="flex items-center space-x-2">
@@ -329,8 +328,8 @@
         </div>
 
         <!-- 8. PLAN DE VIDA -->
-        <div id="screenPlanDeVida" class="screen w-full justify-center items-center">
-             <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-5xl">
+        <div id="screenPlanDeVida" class="screen w-full max-w-5xl mx-auto">
+             <div class="bg-white p-8 rounded-xl shadow-lg">
                 <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Plan de Vida</h2>
                 <div id="planDeVidaContainer" class="space-y-6">
                     <!-- Las tarjetas del plan se insertarán aquí -->
@@ -355,8 +354,8 @@
         </div>
 
         <!-- 9. BÚSQUEDA DE PERSONA -->
-        <div id="screenBusqueda" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl">
+        <div id="screenBusqueda" class="screen w-full max-w-4xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full">
                 <h2 class="text-2xl font-bold text-primary mb-6 border-b pb-4">Búsqueda de Persona</h2>
                 <div class="mb-4">
                     <p class="font-semibold mb-2">Buscar por:</p>
@@ -385,8 +384,8 @@
         </div>
 
         <!-- 10. DETALLE DE PERSONA -->
-        <div id="screenDetallePersona" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-6xl">
+        <div id="screenDetallePersona" class="screen w-full max-w-6xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full">
                 <div class="border-b pb-4 mb-6">
                     <h2 id="detallePersonaNombre" class="text-3xl font-bold text-primary"></h2>
                     <p id="detallePersonaID" class="text-lg text-gray-500 font-mono"></p>
@@ -394,7 +393,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <!-- Columna de Navegación -->
-                    <div id="detallePersonaTabs" class="md:col-span-1">
+                    <div class="md:col-span-1">
                         <div class="space-y-2">
                              <button data-tab="datosGenerales" class="tab-button w-full text-left font-semibold p-3 rounded-lg bg-primary text-white">Datos Generales</button>
                              <button data-tab="seguimiento" class="tab-button w-full text-left font-semibold p-3 rounded-lg hover:bg-gray-100">Seguimiento</button>
@@ -491,8 +490,8 @@
         </div>
 
         <!-- 11. DATOS ADICIONALES -->
-        <div id="screenDatosAdicionales" class="screen w-full justify-center items-center">
-            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-6xl">
+        <div id="screenDatosAdicionales" class="screen w-full max-w-6xl mx-auto">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full">
                 <div class="border-b pb-4 mb-6">
                     <h2 class="text-2xl font-bold text-primary">Módulo de Datos Adicionales</h2>
                     <p class="text-gray-600">Registro detallado de la persona.</p>
@@ -756,77 +755,10 @@
                         <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Consumo de Drogas</button>
                     </div>
                 </div>
-                <div id="formLaboral" class="adicionales-form hidden space-y-6">
-                     <h3 class="text-lg font-semibold text-gray-800">Situación Laboral</h3>
-                     
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                         <fieldset>
-                             <label for="ultimaActividadLaboral" class="block text-sm font-medium text-gray-700">Última Actividad Laboral</label>
-                             <input type="text" id="ultimaActividadLaboral" placeholder="Ej: Vendedor ambulante, construcción..." class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
-                         </fieldset>
-                         <fieldset>
-                             <label for="habilidadesOficios" class="block text-sm font-medium text-gray-700">Habilidades u Oficios</label>
-                             <input type="text" id="habilidadesOficios" placeholder="Ej: Albañilería, carpintería, cocina..." class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
-                         </fieldset>
-                     </div>
-
-                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <fieldset>
-                            <legend class="text-sm font-medium text-gray-700">¿Experiencia formal?</legend>
-                            <div class="mt-2 flex space-x-4">
-                                <label class="flex items-center"><input type="radio" name="expFormal" class="h-4 w-4 text-primary mr-2">Sí</label>
-                                <label class="flex items-center"><input type="radio" name="expFormal" class="h-4 w-4 text-primary mr-2">No</label>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="text-sm font-medium text-gray-700">¿Experiencia informal?</legend>
-                            <div class="mt-2 flex space-x-4">
-                                <label class="flex items-center"><input type="radio" name="expInformal" class="h-4 w-4 text-primary mr-2">Sí</label>
-                                <label class="flex items-center"><input type="radio" name="expInformal" class="h-4 w-4 text-primary mr-2">No</label>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="text-sm font-medium text-gray-700">¿Interés en empleo?</legend>
-                            <div class="mt-2 flex space-x-4">
-                                <label class="flex items-center"><input type="radio" name="interesEmpleo" class="h-4 w-4 text-primary mr-2">Sí</label>
-                                <label class="flex items-center"><input type="radio" name="interesEmpleo" class="h-4 w-4 text-primary mr-2">No</label>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="text-sm font-medium text-gray-700">¿Interés en capacitación?</legend>
-                            <div class="mt-2 flex space-x-4">
-                                <label class="flex items-center"><input type="radio" name="interesCapacitacion" class="h-4 w-4 text-primary mr-2">Sí</label>
-                                <label class="flex items-center"><input type="radio" name="interesCapacitacion" class="h-4 w-4 text-primary mr-2">No</label>
-                            </div>
-                        </fieldset>
-                     </div>
-
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <fieldset>
-                            <legend class="text-sm font-medium text-gray-700">Documentación Laboral</legend>
-                            <div class="mt-2 grid grid-cols-2 gap-2">
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">INE</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">CURP</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">RFC</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">NSS</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Ninguno</label>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="text-sm font-medium text-gray-700">Principales Obstáculos para el Trabajo</legend>
-                            <div class="mt-2 grid grid-cols-2 gap-2">
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Falta de docs</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Estigma</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Salud</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Adicciones</label>
-                                <label class="flex items-center"><input type="checkbox" class="h-4 w-4 text-primary mr-2">Otro</label>
-                            </div>
-                        </fieldset>
-                     </div>
-                     
-                    <div class="flex justify-end">
-                        <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Situación Laboral</button>
-                    </div>
+                <div id="formLaboral" class="adicionales-form hidden space-y-4">
+                     <h3 class="text-lg font-semibold">Situación Laboral</h3>
+                    <!-- Campos de situación laboral -->
+                    <button class="btn-primary text-white font-bold py-2 px-4 rounded-lg">Guardar Situación Laboral</button>
                 </div>
 
                 <div class="mt-8 pt-6 border-t flex justify-between items-center">
@@ -854,9 +786,9 @@
     <!-- MODAL ALERTA DETALLADA -->
     <div id="modalAlertaDetallada" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-lg shadow-xl w-full max-w-lg p-8">
-            <div class="flex justify-between items-center mb-6">
+            <div class="flex justify-between items-center mb-4">
                  <h3 class="text-2xl font-bold text-primary">Detalles de la Alerta de Emergencia</h3>
-                 <button id="btnCerrarAlertaDetallada" class="text-gray-400 hover:text-gray-600 p-1 rounded-full"><i data-lucide="x"></i></button>
+                 <button id="btnCerrarAlertaDetallada" class="text-gray-400 hover:text-gray-600">&times;</button>
             </div>
             <div class="space-y-6">
                 <fieldset>
@@ -880,13 +812,17 @@
                      <label for="detallesAlerta" class="text-md font-semibold mb-2 text-gray-700 block">Proporcione más detalles</label>
                      <textarea id="detallesAlerta" rows="3" class="w-full mt-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none ring-primary focus:ring-2"></textarea>
                 </div>
-                <div class="flex justify-end pt-4 space-x-4">
-                     <button id="btnCancelarAlerta" type="button" class="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg">Cancelar</button>
-                    <button id="btnEnviarAlerta" class="btn-primary text-white font-bold py-2 px-6 rounded-lg flex items-center space-x-2">
-                         <i data-lucide="send" class="icon"></i>
-                         <span>Enviar Alerta</span>
-                    </button>
-                </div>
+                <div class="flex justify-between pt-4">
+    <button id="btnCancelarAlerta" class="bg-gray-200 text-gray-800 font-bold py-2 px-6 rounded-lg">
+        Cancelar
+    </button>
+    <button id="btnEnviarAlerta" class="btn-primary text-white font-bold py-2 px-6 rounded-lg flex items-center space-x-2">
+        <i data-lucide="send" class="icon"></i>
+        <span>Enviar Alerta</span>
+    </button>
+</div>
+
+
             </div>
         </div>
     </div>
@@ -925,17 +861,68 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- STATE MANAGEMENT ---
             let currentPerson = null;
 
-            // --- NAVIGATION ---
+            // --- LÓGICA DE NAVEGACIÓN ---
             const navigateTo = (screenId, personData = null) => {
-                if (personData) currentPerson = personData;
-                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
-                document.getElementById(screenId)?.classList.add('active-screen');
+                if (personData) {
+                    currentPerson = personData;
+                }
+
+                document.querySelectorAll('.screen').forEach(screen => {
+                    screen.classList.remove('active-screen');
+                });
+                const targetScreen = document.getElementById(screenId);
+                if (targetScreen) {
+                    targetScreen.classList.add('active-screen');
+                }
             };
 
-            // --- UTILITIES ---
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetScreen = button.dataset.target;
+                    if(targetScreen) navigateTo(targetScreen);
+                });
+            });
+
+            // --- LÓGICA TIPO DE ATENCIÓN ---
+            document.getElementById('btnContinuarAtencion').addEventListener('click', () => {
+                const tipoSeleccionado = document.querySelector('input[name="tipoAtencion"]:checked');
+                if (tipoSeleccionado) {
+                    if (tipoSeleccionado.value === 'calle') {
+                        navigateTo('screenOpcionesCalle');
+                    } else {
+                        alert('La sección "Atención en Albergue" aún no está implementada.');
+                    }
+                } else {
+                    alert('Por favor, selecciona un tipo de atención.');
+                }
+            });
+
+            // --- LÓGICA FORMULARIO A ---
+            const numBrigadaSlider = document.getElementById('numBrigada');
+            const numBrigadaValue = document.getElementById('numBrigadaValue');
+            if (numBrigadaSlider) {
+                numBrigadaSlider.addEventListener('input', (e) => {
+                    numBrigadaValue.textContent = e.target.value;
+                });
+            }
+
+             const fechaHoraInput = document.getElementById('fechaHora');
+             if(fechaHoraInput) {
+                const now = new Date();
+                fechaHoraInput.value = now.toLocaleString('es-MX');
+             }
+
+            document.querySelectorAll('input[name="identificado"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const esSi = e.target.value === 'si';
+                    document.getElementById('camposIdentificadoSi').classList.toggle('hidden', !esSi);
+                    document.getElementById('camposIdentificadoNo').classList.toggle('hidden', esSi);
+                });
+            });
+
             const generaClaveUnica = (nombre, apellido1, apellido2) => {
                  let clave = "";
                  const fecha = new Date();
@@ -949,334 +936,387 @@
                      clave += (apellido2 ? apellido2.substring(0, 1).toUpperCase() : 'X');
                      clave += nombre.substring(0, 1).toUpperCase();
                  } else if (nombre) {
-                     clave += nombre.substring(0, 2).toUpperCase() + 'XX';
+                     clave += nombre.substring(0, 2).toUpperCase();
+                     clave += 'XX';
                  }
                  clave += `${d}${m}${a}${consecutivo}`;
                  return clave;
             };
 
-            const setupConditionalField = (radioGroupName, conditionalElementId, showOnValue = 'si') => {
-                document.querySelectorAll(`input[name="${radioGroupName}"]`).forEach(radio => {
-                    radio.addEventListener('change', e => {
-                        document.getElementById(conditionalElementId)?.classList.toggle('hidden', e.target.value !== showOnValue);
-                    });
-                });
-            };
-            
-            const setupTabs = (containerSelector, buttonClass, contentClass, contentPrefix) => {
-                const container = document.querySelector(containerSelector);
-                container?.addEventListener('click', e => {
-                    const button = e.target.closest(`.${buttonClass}`);
-                    if (!button) return;
-                    
-                    const tabId = button.dataset.tab || button.dataset.form;
-                    
-                    if(tabId === 'alerta'){
-                        document.getElementById('modalAlertaDetallada').classList.remove('hidden');
-                        return;
-                    }
+            const modal = document.getElementById('modalAtencion');
+            const modalDetallada = document.getElementById('modalAlertaDetallada');
 
-                    container.querySelectorAll(`.${buttonClass}`).forEach(btn => {
-                        btn.classList.remove('bg-primary', 'text-white', 'text-primary', 'border-primary');
-                        if (containerSelector.includes('adicionales')) {
-                             btn.classList.add('text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
-                        } else {
-                             btn.classList.add('hover:bg-gray-100');
-                        }
-                    });
-                    
-                    button.classList.remove('hover:bg-gray-100', 'text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
-
-                    if(containerSelector.includes('adicionales')) {
-                        button.classList.add('text-primary', 'border-primary');
-                    } else {
-                        button.classList.add('bg-primary', 'text-white');
-                    }
-                    
-                    container.closest('.grid, .bg-white').querySelectorAll(`.${contentClass}`).forEach(content => content.classList.add('hidden'));
-                    const contentId = contentPrefix + tabId.charAt(0).toUpperCase() + tabId.slice(1);
-                    document.getElementById(contentId)?.classList.remove('hidden');
-                });
-            };
-
-            // --- MODULE INITIALIZATION ---
-
-            function setupFormA() {
-                const numBrigadaSlider = document.getElementById('numBrigada');
-                if(numBrigadaSlider) {
-                    numBrigadaSlider.addEventListener('input', e => {
-                        document.getElementById('numBrigadaValue').textContent = e.target.value;
-                    });
+            document.getElementById('btnGuardarA').addEventListener('click', () => {
+                const esIdentificado = document.querySelector('input[name="identificado"]:checked')?.value === 'si';
+                let clave;
+                if(esIdentificado) {
+                    const nombre = document.getElementById('nombre').value;
+                    const ap1 = document.getElementById('primerApellido').value;
+                    const ap2 = document.getElementById('segundoApellido').value;
+                    if(!nombre || !ap1) { alert("Nombre y Primer Apellido son obligatorios."); return; }
+                    clave = generaClaveUnica(nombre, ap1, ap2);
+                } else {
+                    const apodo = document.getElementById('apodo').value;
+                    if(!apodo) { alert("El nombre o apodo es obligatorio."); return; }
+                    clave = generaClaveUnica(apodo, null, null);
                 }
-                document.getElementById('fechaHora').value = new Date().toLocaleString('es-MX');
-                setupConditionalField('identificado', 'camposIdentificadoSi', 'si');
-                setupConditionalField('identificado', 'camposIdentificadoNo', 'no');
-            }
+                document.getElementById('claveUnicaResultado').textContent = clave;
+                document.getElementById('claveUnicaContainer').classList.remove('hidden');
+                
+                setTimeout(() => modal.classList.remove('hidden'), 300);
+            });
             
-            function setupCareModule() {
-                 const dependenciasInmediatas = ['Secretaría de Salud', 'Comedores Comunitarios', 'Emergencia Social', 'UTOPIAS', 'Unidad de Atención Diurna'];
-                 const cuidadosInmediatos = [
-                    { id: 'alim', nombre: 'Alimentación', deps: dependenciasInmediatas }, { id: 'higi', nombre: 'Higiene', deps: dependenciasInmediatas }, { id: 'docu', nombre: 'Documentación', deps: dependenciasInmediatas }, { id: 'movi', nombre: 'Bienes de Movilidad Asistida', deps: dependenciasInmediatas }
-                 ];
-                 const cuidadosMedianoPlazo = [
-                    { id: 'cmed', nombre: 'Consulta Médica', deps: ['Secretaría de Salud (Consulta Médica)'] }, { id: 'psic', nombre: 'Consulta Psicológica', deps: ['Secretaría de Salud (Consulta Psicológica)'] }, { id: 'docm', nombre: 'Documentación', deps: ['Consejería Jurídica (Documentación)'] }, { id: 'adic', nombre: 'Tratamiento contra las adicciones', deps: ['IAPA (tratamiento ambulatorio para las adicciones)'] }, { id: 'lfam', nombre: 'Reconstrucción de lazos familiares', deps: ['Fiscalía (Reunificación Familiar)'] }, { id: 'hlab', nombre: 'Habilidades laborales', deps: ['STYFE (Talleres / Habilidades laborales)'] }, { id: 'erec', nombre: 'Eventos recreativos', deps: ['PILARES / INDEPORTE (Actividades recreativas)'] }
-                 ];
-                const createCareItemHTML = (item) => {
-                    const depOptions = item.deps.map(dep => `<option value="${dep}">${dep}</option>`).join('');
-                    return `
-                    <div class="bg-gray-50 p-4 rounded-lg border">
-                        <div class="flex justify-between items-center">
-                            <span class="font-semibold text-gray-800">${item.nombre}</span>
-                            <div class="flex items-center space-x-2">
-                                <label class="text-sm">Solicitud Hecha:</label>
-                                <div class="relative inline-block w-10 align-middle select-none">
-                                    <input type="checkbox" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer solicitud-toggle"/>
-                                    <label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                </div>
+            document.getElementById('btnAtencionNo').addEventListener('click', () => {
+                modal.classList.add('hidden');
+                navigateTo('screenFormularioB');
+            });
+
+            document.getElementById('btnAtencionSi').addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modalDetallada.classList.remove('hidden');
+            });
+
+            document.getElementById('btnEnviarAlerta').addEventListener('click', () => {
+                modalDetallada.classList.add('hidden');
+                alert("ALERTA ENVIADA: Se ha notificado al equipo de emergencia con los detalles proporcionados.");
+                navigateTo('screenFormularioB');
+            });
+            
+            document.getElementById('btnCerrarAlertaDetallada').addEventListener('click', () => {
+                modalDetallada.classList.add('hidden');
+            });
+            document.getElementById('btnCancelarAlerta').addEventListener('click', () => {
+    modalDetallada.classList.add('hidden');
+    navigateTo('screenFormularioB');
+});
+
+            
+            document.getElementById('btnGuardarFinal').addEventListener('click', () => {
+                alert("Registro completo guardado exitosamente.");
+                document.getElementById('formA').reset();
+                document.getElementById('claveUnicaContainer').classList.add('hidden');
+                document.getElementById('camposIdentificadoSi').classList.add('hidden');
+                document.getElementById('camposIdentificadoNo').classList.add('hidden');
+                navigateTo('screenPrincipal');
+            });
+
+            // --- LÓGICA DESARROLLO DE CUIDADOS ---
+            const dependenciasInmediatas = [
+                'Secretaría de Salud', 'Comedores Comunitarios', 'Emergencia Social', 'UTOPIAS', 'Unidad de Atención Diurna'
+            ];
+            const cuidadosInmediatos = [
+                { id: 'alim', nombre: 'Alimentación', deps: dependenciasInmediatas }, { id: 'higi', nombre: 'Higiene', deps: dependenciasInmediatas }, { id: 'docu', nombre: 'Documentación', deps: dependenciasInmediatas }, { id: 'movi', nombre: 'Bienes de Movilidad Asistida', deps: dependenciasInmediatas }
+            ];
+            const cuidadosMedianoPlazo = [
+                { id: 'cmed', nombre: 'Consulta Médica', deps: ['Secretaría de Salud (Consulta Médica)'] }, { id: 'psic', nombre: 'Consulta Psicológica', deps: ['Secretaría de Salud (Consulta Psicológica)'] }, { id: 'docm', nombre: 'Documentación', deps: ['Consejería Jurídica (Documentación)'] }, { id: 'adic', nombre: 'Tratamiento contra las adicciones', deps: ['IAPA (tratamiento ambulatorio para las adicciones)'] }, { id: 'lfam', nombre: 'Reconstrucción de lazos familiares', deps: ['Fiscalía (Reunificación Familiar)'] }, { id: 'hlab', nombre: 'Habilidades laborales', deps: ['STYFE (Talleres / Habilidades laborales)'] }, { id: 'erec', nombre: 'Eventos recreativos', deps: ['PILARES / INDEPORTE (Actividades recreativas)'] }
+            ];
+
+            const createCareItemHTML = (item) => {
+                const depOptions = item.deps.map(dep => `<option value="${dep}">${dep}</option>`).join('');
+                return `
+                <div class="bg-gray-50 p-4 rounded-lg border">
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold text-gray-800">${item.nombre}</span>
+                        <div class="flex items-center space-x-2">
+                            <label for="solicitud-${item.id}" class="text-sm">Solicitud Hecha:</label>
+                            <div class="relative inline-block w-10 align-middle select-none">
+                                <input type="checkbox" name="solicitud-${item.id}" id="solicitud-${item.id}" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer solicitud-toggle"/>
+                                <label for="solicitud-${item.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
                             </div>
                         </div>
-                        <div class="details-container hidden mt-4 pt-4 border-t space-y-4">
-                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700">Dependencia Responsable</label>
-                                    <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">${depOptions}</select>
-                                </div>
-                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700">Nombre de Enlace</label>
-                                    <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Buscar enlace...">
-                                </div>
+                    </div>
+                    <div class="details-container hidden mt-4 pt-4 border-t space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Dependencia Responsable</label>
+                                <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">${depOptions}</select>
+                            </div>
+                             <div>
+                                <label class="block text-sm font-medium text-gray-700">Nombre de Enlace</label>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Buscar enlace...">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Estatus Solicitud</label>
+                            <div class="flex flex-wrap gap-2 status-buttons">
+                                <button class="bg-yellow-200 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full">Pendiente</button>
+                                <button class="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">Atendida</button>
+                                <button class="bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">Cancelada</button>
+                                <button data-item-name="${item.nombre}" class="consultar-btn bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full flex items-center gap-1">
+                                    Consultar <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            };
+
+            const immediateContainer = document.getElementById('cuidadosInmediatosContainer');
+            const mediumTermContainer = document.getElementById('cuidadosMedianoPlazoContainer');
+            if(immediateContainer && mediumTermContainer){
+                immediateContainer.innerHTML = cuidadosInmediatos.map(createCareItemHTML).join('');
+                mediumTermContainer.innerHTML = cuidadosMedianoPlazo.map(createCareItemHTML).join('');
+            }
+            
+            document.getElementById('app-container').addEventListener('change', (e) => {
+                if(e.target.classList.contains('solicitud-toggle')) {
+                    const details = e.target.closest('.bg-gray-50').querySelector('.details-container');
+                    details.classList.toggle('hidden', !e.target.checked);
+                }
+            });
+            
+            document.getElementById('app-container').addEventListener('click', (e) => {
+                 if (e.target.closest('.status-buttons') && e.target.tagName === 'BUTTON' && !e.target.classList.contains('consultar-btn')) {
+                    const group = e.target.closest('.status-buttons');
+                    group.querySelectorAll('button:not(.consultar-btn)').forEach(btn => {
+                        btn.className = 'bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full';
+                    });
+                    const status = e.target.textContent.trim();
+                    if(status === 'Pendiente') e.target.classList.add('bg-yellow-200', 'text-yellow-800');
+                    else if(status === 'Atendida') e.target.classList.add('bg-green-200', 'text-green-800');
+                    else if(status === 'Cancelada') e.target.classList.add('bg-red-200', 'text-red-800');
+                }
+
+                if(e.target.closest('.consultar-btn')) {
+                    const btn = e.target.closest('.consultar-btn');
+                    const itemName = btn.dataset.itemName;
+                    document.getElementById('modalConsultarTitle').textContent = `Consultar Solicitud: ${itemName}`;
+                    btnAsignarCerrar.classList.toggle('hidden', !rolEnlaceToggle.checked);
+                    modalConsultar.classList.remove('hidden');
+                }
+            });
+            
+            const modalConsultar = document.getElementById('modalConsultarCuidado');
+            const btnAsignarCerrar = document.getElementById('btnAsignarCerrar');
+            const rolEnlaceToggle = document.getElementById('rolEnlace');
+
+            if(rolEnlaceToggle) rolEnlaceToggle.addEventListener('change', () => btnAsignarCerrar.classList.toggle('hidden', !rolEnlaceToggle.checked));
+            if(modalConsultar) document.getElementById('btnCerrarConsultar').addEventListener('click', () => modalConsultar.classList.add('hidden'));
+
+            // --- LÓGICA PLAN DE VIDA ---
+            const planDeVidaItems = [
+                { id: 'addic', nombre: 'Programa Erradicación Adicciones' }, { id: 'capvida', nombre: 'Fortalecimiento Capacidades para la Vida' }, { id: 'habtrab', nombre: 'Fortalecimiento Habilidades para el Trabajo' }, { id: 'reinfam', nombre: 'Reintegración Familiar' }
+            ];
+
+            const createPlanItemHTML = (item) => {
+                let extraFields = (item.id === 'reinfam') ? `
+                    <div class="mt-4">
+                        <label class="block text-sm font-medium text-gray-700">Nombre del Contacto Familiar</label>
+                        <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Ej: Maria López (Madre)...">
+                    </div>` : '';
+
+                return `
+                <div class="bg-gray-50 p-4 rounded-lg border">
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold text-gray-800">${item.nombre}</span>
+                        <div class="flex items-center space-x-2">
+                            <label for="plan-${item.id}" class="text-sm">¿Incluir en el Plan?:</label>
+                            <div class="relative inline-block w-10 align-middle select-none">
+                                <input type="checkbox" name="plan-${item.id}" id="plan-${item.id}" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer plan-toggle"/>
+                                <label for="plan-${item.id}" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-details-container hidden mt-4 pt-4 border-t space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Estatus</label>
+                                <select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                    <option>No iniciado</option> <option>En proceso</option> <option>Completado</option> <option>Rechazado</option>
+                                </select>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Estatus Solicitud</label>
-                                <div class="flex flex-wrap gap-2 status-buttons">
-                                    <button data-status="Pendiente" class="status-button bg-yellow-200 text-yellow-800 text-sm font-semibold px-3 py-1 rounded-full">Pendiente</button>
-                                    <button data-status="Atendida" class="status-button bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">Atendida</button>
-                                    <button data-status="Cancelada" class="status-button bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full">Cancelada</button>
-                                    <button data-item-name="${item.nombre}" class="consultar-btn bg-blue-500 hover:bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-full flex items-center gap-1">Consultar <i data-lucide="arrow-right" class="h-4 w-4"></i></button>
-                                </div>
+                                <label class="block text-sm font-medium text-gray-700">Institución Responsable</label>
+                                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Ej: IAPA, STYFE...">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">Fecha de Inicio</label>
+                                <input type="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary">
                             </div>
                         </div>
-                    </div>`;
-                };
-                document.getElementById('cuidadosInmediatosContainer').innerHTML = cuidadosInmediatos.map(createCareItemHTML).join('');
-                document.getElementById('cuidadosMedianoPlazoContainer').innerHTML = cuidadosMedianoPlazo.map(createCareItemHTML).join('');
-            }
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Observaciones</label>
+                            <textarea class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" rows="3" placeholder="Añadir metas, notas o comentarios..."></textarea>
+                        </div>
+                        ${extraFields}
+                    </div>
+                </div>`;
+            };
             
-            function setupPlanDeVida() {
-                const planDeVidaItems = [
-                    { id: 'addic', nombre: 'Programa Erradicación Adicciones' }, { id: 'capvida', nombre: 'Fortalecimiento Capacidades para la Vida' }, { id: 'habtrab', nombre: 'Fortalecimiento Habilidades para el Trabajo' }, { id: 'reinfam', nombre: 'Reintegración Familiar' }
-                ];
-                const createPlanItemHTML = (item) => {
-                    let extraFields = (item.id === 'reinfam') ? `
-                        <div class="mt-4">
-                            <label class="block text-sm font-medium text-gray-700">Nombre del Contacto Familiar</label>
-                            <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Ej: Maria López (Madre)...">
-                        </div>` : '';
-                    return `
-                    <div class="bg-gray-50 p-4 rounded-lg border">
-                        <div class="flex justify-between items-center">
-                            <span class="font-semibold text-gray-800">${item.nombre}</span>
-                            <div class="flex items-center space-x-2">
-                                <label class="text-sm">¿Incluir en el Plan?:</label>
-                                <div class="relative inline-block w-10 align-middle select-none">
-                                    <input type="checkbox" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer plan-toggle"/>
-                                    <label class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="plan-details-container hidden mt-4 pt-4 border-t space-y-4">
-                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div><label class="block text-sm font-medium text-gray-700">Estatus</label><select class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"><option>No iniciado</option><option>En proceso</option><option>Completado</option></select></div>
-                                <div><label class="block text-sm font-medium text-gray-700">Institución Responsable</label><input type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" placeholder="Ej: IAPA, STYFE..."></div>
-                                <div><label class="block text-sm font-medium text-gray-700">Fecha de Inicio</label><input type="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary"></div>
-                            </div>
-                            <div><label class="block text-sm font-medium text-gray-700">Observaciones</label><textarea class="mt-1 w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary" rows="3" placeholder="Añadir metas, notas o comentarios..."></textarea></div>
-                            ${extraFields}
-                        </div>
-                    </div>`;
-                };
-                document.getElementById('planDeVidaContainer').innerHTML = planDeVidaItems.map(createPlanItemHTML).join('');
-            }
-
-            function setupSearch() {
-                const mockData = [
-                    {id: 'PEGA25092025123', nombre: 'Alejandro', apellido1: 'Perez', apellido2: 'Garcia', sexo: 'Hombre', edad: '26-35 años', fecha: '25/09/2025', ubicacion: 'Metro Hidalgo'},
-                    {id: 'ROXM15082025456', nombre: 'Maria', apellido1: 'Rojas', apellido2: 'Martinez', sexo: 'Mujer', edad: '36-50 años', fecha: '15/08/2025', ubicacion: 'Alameda Central'},
-                    {id: 'GOJF01072025789', nombre: 'Francisco Javier', apellido1: 'Gonzalez', apellido2: 'Juarez', sexo: 'Hombre', edad: '18-25 años', fecha: '01/07/2025', ubicacion: 'Zócalo'},
-                    {id: 'ALVP20092025321', nombre: 'Pedro', apellido1: 'Alvarez', apellido2: '', sexo: 'Hombre', edad: '+50 años', fecha: '20/09/2025', ubicacion: 'Metro Bellas Artes'},
-                ];
-                const inputNombre = document.getElementById('inputBusquedaNombre');
-                const inputID = document.getElementById('inputBusquedaID');
-                const resultadosContainer = document.getElementById('resultadosBusqueda');
-
-                const renderResultados = (resultados) => {
-                    if (resultados.length === 0) {
-                        resultadosContainer.innerHTML = `<p class="text-center text-gray-500 py-4">No se encontraron coincidencias.</p>`;
-                        return;
-                    }
-                    resultadosContainer.innerHTML = resultados.map(p => `
-                        <div class="p-4 border-b hover:bg-gray-50 cursor-pointer resultado-item" data-id="${p.id}">
-                            <p class="font-semibold text-lg text-primary">${p.nombre} ${p.apellido1} ${p.apellido2}</p>
-                            <p class="text-sm text-gray-600 font-mono">${p.id}</p>
-                        </div>
-                    `).join('');
-                };
-
-                inputNombre.addEventListener('input', (e) => {
-                    const query = e.target.value.toLowerCase();
-                    if (!query) { resultadosContainer.innerHTML = ''; return; }
-                    const resultados = mockData.filter(p => `${p.nombre} ${p.apellido1} ${p.apellido2}`.toLowerCase().includes(query));
-                    renderResultados(resultados);
-                });
-
-                inputID.addEventListener('input', (e) => {
-                    const query = e.target.value.toUpperCase();
-                     if (!query) { resultadosContainer.innerHTML = ''; return; }
-                    const resultados = mockData.filter(p => p.id.includes(query));
-                    renderResultados(resultados);
-                });
-                
-                return mockData; // Return for use in other functions
-            }
-            
-            function setupDetailView(mockData) {
-                document.getElementById('resultadosBusqueda').addEventListener('click', (e) => {
-                    const item = e.target.closest('.resultado-item');
-                    if (item) {
-                        const persona = mockData.find(p => p.id === item.dataset.id);
-                        if (persona) {
-                            navigateTo('screenDetallePersona', persona);
-                             const fullName = `${persona.nombre} ${persona.apellido1} ${persona.apellido2}`;
-                             document.getElementById('detallePersonaNombre').textContent = fullName;
-                             document.getElementById('detallePersonaID').textContent = persona.id;
-                             document.getElementById('detalleSexo').textContent = persona.sexo;
-                             document.getElementById('detalleEdad').textContent = persona.edad;
-                             document.getElementById('detalleFecha').textContent = persona.fecha;
-                             document.getElementById('detalleUbicacion').textContent = persona.ubicacion;
-                            
-                             document.getElementById('adicionalesNombre').textContent = fullName;
-                             document.getElementById('adicionalesID').textContent = persona.id;
-                             document.getElementById('adicionalesSexo').textContent = persona.sexo;
-                             document.getElementById('adicionalesEdad').textContent = persona.edad;
-                             document.getElementById('adicionalesFecha').textContent = persona.fecha;
-                        }
-                    }
-                });
-            }
-
-            // --- MAIN EVENT LISTENER (EVENT DELEGATION) ---
-            document.getElementById('app-container').addEventListener('click', e => {
-                const activeScreenId = document.querySelector('.active-screen')?.id;
-                
-                // Navigation Buttons
-                const navButton = e.target.closest('.nav-button');
-                if (navButton && navButton.dataset.target) {
-                    navigateTo(navButton.dataset.target);
-                }
-
-                // Attention Type Logic
-                if (e.target.id === 'btnContinuarAtencion') {
-                    const tipo = document.querySelector('input[name="tipoAtencion"]:checked')?.value;
-                    if(tipo === 'calle') navigateTo('screenOpcionesCalle');
-                    else if(tipo === 'albergue') alert('Módulo no implementado.');
-                    else alert('Seleccione un tipo de atención.');
-                }
-                
-                // Form A Save Logic
-                if (e.target.id === 'btnGuardarA') {
-                    const esIdentificado = document.querySelector('input[name="identificado"]:checked')?.value === 'si';
-                    let clave;
-                    if(esIdentificado) {
-                        const nombre = document.getElementById('nombre').value;
-                        const ap1 = document.getElementById('primerApellido').value;
-                        clave = generaClaveUnica(nombre, ap1, document.getElementById('segundoApellido').value);
-                    } else {
-                        clave = generaClaveUnica(document.getElementById('apodo').value, null, null);
-                    }
-                    document.getElementById('claveUnicaResultado').textContent = clave;
-                    document.getElementById('claveUnicaContainer').classList.remove('hidden');
-                    document.getElementById('modalAtencion').classList.remove('hidden');
-                }
-                
-                // Final Save
-                if(e.target.id === 'btnGuardarFinal') {
-                    alert("Registro completo guardado exitosamente.");
-                    navigateTo('screenPrincipal');
-                }
-
-                // Modals
-                if (e.target.id === 'btnAtencionNo') {
-                    e.target.closest('.fixed').classList.add('hidden');
-                    if(activeScreenId === 'screenFormularioA') navigateTo('screenFormularioB');
-                }
-                if (e.target.id === 'btnAtencionSi') {
-                    e.target.closest('.fixed').classList.add('hidden');
-                    document.getElementById('modalAlertaDetallada').classList.remove('hidden');
-                }
-                if (e.target.id === 'btnEnviarAlerta') {
-                    e.target.closest('.fixed').classList.add('hidden');
-                    alert("ALERTA ENVIADA.");
-                    if(activeScreenId === 'screenFormularioA') navigateTo('screenFormularioB');
-                }
-                if (e.target.id === 'btnCancelarAlerta') {
-                    e.target.closest('.fixed').classList.add('hidden');
-                    if(activeScreenId === 'screenFormularioA') navigateTo('screenFormularioB');
-                }
-                if (e.target.closest('#btnCerrarAlertaDetallada') || e.target.id === 'btnCerrarConsultar') {
-                    e.target.closest('.fixed').classList.add('hidden');
-                }
-                
-                // Care Module Status Buttons
-                const statusButton = e.target.closest('.status-button');
-                if (statusButton) {
-                    statusButton.parentElement.querySelectorAll('.status-button').forEach(btn => {
-                        btn.className = 'status-button bg-gray-200 text-gray-800 text-sm font-semibold px-3 py-1 rounded-full';
+            const planContainer = document.getElementById('planDeVidaContainer');
+            if(planContainer){
+                planContainer.innerHTML = planDeVidaItems.map(createPlanItemHTML).join('');
+                document.querySelectorAll('.plan-toggle').forEach(toggle => {
+                    toggle.addEventListener('change', (e) => {
+                        const details = e.target.closest('.bg-gray-50').querySelector('.plan-details-container');
+                        details.classList.toggle('hidden', !e.target.checked);
                     });
-                    const statusColors = {'Pendiente': ['bg-yellow-200', 'text-yellow-800'], 'Atendida': ['bg-green-200', 'text-green-800'], 'Cancelada': ['bg-red-200', 'text-red-800']};
-                    statusButton.classList.add(...(statusColors[statusButton.dataset.status] || []));
-                }
+                });
+            }
 
-                // Care Module Consultar Button
-                const consultarBtn = e.target.closest('.consultar-btn');
-                if (consultarBtn) {
-                    document.getElementById('modalConsultarTitle').textContent = `Consultar: ${consultarBtn.dataset.itemName}`;
-                    document.getElementById('modalConsultarCuidado').classList.remove('hidden');
+            // --- LÓGICA BÚSQUEDA DE PERSONA ---
+            const mockData = [
+                {id: 'PEGA25092025123', nombre: 'Alejandro', apellido1: 'Perez', apellido2: 'Garcia', sexo: 'Hombre', edad: '26-35 años', fecha: '25/09/2025', ubicacion: 'Metro Hidalgo'},
+                {id: 'ROXM15082025456', nombre: 'Maria', apellido1: 'Rojas', apellido2: 'Martinez', sexo: 'Mujer', edad: '36-50 años', fecha: '15/08/2025', ubicacion: 'Alameda Central'},
+                {id: 'GOJF01072025789', nombre: 'Francisco Javier', apellido1: 'Gonzalez', apellido2: 'Juarez', sexo: 'Hombre', edad: '18-25 años', fecha: '01/07/2025', ubicacion: 'Zócalo'},
+                {id: 'ALVP20092025321', nombre: 'Pedro', apellido1: 'Alvarez', apellido2: '', sexo: 'Hombre', edad: '+50 años', fecha: '20/09/2025', ubicacion: 'Metro Bellas Artes'},
+            ];
+            
+            const inputNombre = document.getElementById('inputBusquedaNombre');
+            const inputID = document.getElementById('inputBusquedaID');
+            const resultadosContainer = document.getElementById('resultadosBusqueda');
+
+            const renderResultados = (resultados) => {
+                if (resultados.length === 0) {
+                    resultadosContainer.innerHTML = `<p class="text-center text-gray-500 py-4">No se encontraron coincidencias.</p>`;
+                    return;
+                }
+                resultadosContainer.innerHTML = resultados.map(p => `
+                    <div class="p-4 border-b hover:bg-gray-50 cursor-pointer resultado-item" data-id="${p.id}">
+                        <p class="font-semibold text-lg text-primary">${p.nombre} ${p.apellido1} ${p.apellido2}</p>
+                        <p class="text-sm text-gray-600 font-mono">${p.id}</p>
+                    </div>
+                `).join('');
+            };
+
+            inputNombre.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                if (!query) { resultadosContainer.innerHTML = ''; return; }
+                const resultados = mockData.filter(p => `${p.nombre} ${p.apellido1} ${p.apellido2}`.toLowerCase().includes(query));
+                renderResultados(resultados);
+            });
+
+            inputID.addEventListener('input', (e) => {
+                const query = e.target.value.toUpperCase();
+                 if (!query) { resultadosContainer.innerHTML = ''; return; }
+                const resultados = mockData.filter(p => p.id.includes(query));
+                renderResultados(resultados);
+            });
+
+            document.querySelectorAll('input[name="tipoBusqueda"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    const esNombre = e.target.value === 'nombre';
+                    document.getElementById('campoBusquedaNombre').classList.toggle('hidden', !esNombre);
+                    document.getElementById('campoBusquedaID').classList.toggle('hidden', esNombre);
+                    inputNombre.value = '';
+                    inputID.value = '';
+                    resultadosContainer.innerHTML = '';
+                });
+            });
+
+            // --- LÓGICA DETALLE DE PERSONA ---
+            resultadosContainer.addEventListener('click', (e) => {
+                const item = e.target.closest('.resultado-item');
+                if (item) {
+                    const personaId = item.dataset.id;
+                    const persona = mockData.find(p => p.id === personaId);
+                    if (persona) {
+                        navigateTo('screenDetallePersona', persona);
+                        document.getElementById('detallePersonaNombre').textContent = `${persona.nombre} ${persona.apellido1} ${persona.apellido2}`;
+                        document.getElementById('detallePersonaID').textContent = persona.id;
+                        document.getElementById('detalleSexo').textContent = persona.sexo;
+                        document.getElementById('detalleEdad').textContent = persona.edad;
+                        document.getElementById('detalleFecha').textContent = persona.fecha;
+                        document.getElementById('detalleUbicacion').textContent = persona.ubicacion;
+                        
+                        // Populate Adicionales Header
+                        document.getElementById('adicionalesNombre').textContent = `${persona.nombre} ${persona.apellido1} ${persona.apellido2}`;
+                        document.getElementById('adicionalesID').textContent = persona.id;
+                        document.getElementById('adicionalesSexo').textContent = persona.sexo;
+                        document.getElementById('adicionalesEdad').textContent = persona.edad;
+                        document.getElementById('adicionalesFecha').textContent = persona.fecha;
+                    }
                 }
             });
+
+            const tabsContainer = document.querySelector('#screenDetallePersona .md\\:col-span-1');
+            if(tabsContainer) {
+                tabsContainer.addEventListener('click', e => {
+                    if(e.target.classList.contains('tab-button')) {
+                        tabsContainer.querySelectorAll('.tab-button').forEach(btn => {
+                            btn.classList.remove('bg-primary', 'text-white');
+                            btn.classList.add('hover:bg-gray-100');
+                        });
+                        e.target.classList.add('bg-primary', 'text-white');
+                        e.target.classList.remove('hover:bg-gray-100');
+
+                        const tabId = e.target.dataset.tab;
+                        
+                        if (tabId === 'alerta') {
+                            modalDetallada.classList.remove('hidden');
+                            return; // Don't switch tabs, just show modal
+                        }
+                        
+                        document.querySelectorAll('.tab-content').forEach(content => {
+                            content.classList.add('hidden');
+                        });
+                        const activeContent = document.getElementById(`tabContent${tabId.charAt(0).toUpperCase() + tabId.slice(1)}`);
+                        if(activeContent) activeContent.classList.remove('hidden');
+                    }
+                });
+            }
+
+            // --- LÓGICA DATOS ADICIONALES ---
+            const adicionalesTabs = document.getElementById('adicionalesTabs');
+            if(adicionalesTabs) {
+                 adicionalesTabs.addEventListener('click', e => {
+                    if(e.target.classList.contains('adicionales-tab-button')) {
+                        adicionalesTabs.querySelectorAll('.adicionales-tab-button').forEach(btn => {
+                            btn.className = 'adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300';
+                        });
+                        e.target.className = 'adicionales-tab-button whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-primary border-primary';
+
+                        const formId = e.target.dataset.form;
+                        document.querySelectorAll('.adicionales-form').forEach(form => {
+                            form.classList.add('hidden');
+                        });
+                         const activeForm = document.getElementById(`form${formId.charAt(0).toUpperCase() + formId.slice(1)}`);
+                        if(activeForm) activeForm.classList.remove('hidden');
+                    }
+                 });
+            }
             
-            document.getElementById('app-container').addEventListener('change', e => {
-                 // Care/Plan toggles
-                const toggle = e.target.closest('.solicitud-toggle, .plan-toggle');
-                if (toggle) {
-                    toggle.closest('.bg-gray-50').querySelector('.details-container, .plan-details-container').classList.toggle('hidden', !toggle.checked);
-                }
-                 // Search type radio
-                if(e.target.name === 'tipoBusqueda') {
-                    const isNombre = e.target.value === 'nombre';
-                    document.getElementById('campoBusquedaNombre').classList.toggle('hidden', !isNombre);
-                    document.getElementById('campoBusquedaID').classList.toggle('hidden', isNombre);
-                    document.getElementById('inputBusquedaNombre').value = '';
-                    document.getElementById('inputBusquedaID').value = '';
-                    document.getElementById('resultadosBusqueda').innerHTML = '';
-                }
+            // Lógica para el campo condicional en el formulario de Educación
+            document.querySelectorAll('input[name="interesEstudios"]').forEach(radio => {
+                radio.addEventListener('change', e => {
+                    const campoNivel = document.getElementById('campoNivelInteres');
+                    if (e.target.value === 'si') {
+                        campoNivel.classList.remove('hidden');
+                    } else {
+                        campoNivel.classList.add('hidden');
+                    }
+                });
             });
 
-            // --- INITIALIZE APP ---
-            setupFormA();
-            setupCareModule();
-            setupPlanDeVida();
-            const mockData = setupSearch();
-            setupDetailView(mockData);
-            setupTabs('#detallePersonaTabs', 'tab-button', 'tab-content', 'tabContent');
-            setupTabs('#adicionalesTabs', 'adicionales-tab-button', 'adicionales-form', 'form');
-            setupConditionalField('interesEstudios', 'campoNivelInteres');
-            setupConditionalField('episodiosSobredosis', 'campoVecesSobredosis');
-            setupConditionalField('tratamientoPrevio', 'campoEspecificarTratamiento');
-            
+            // Lógica para campos condicionales en Consumo de Drogas
+            document.querySelectorAll('input[name="episodiosSobredosis"]').forEach(radio => {
+                radio.addEventListener('change', e => {
+                    const campoVeces = document.getElementById('campoVecesSobredosis');
+                    if (e.target.value === 'si') {
+                        campoVeces.classList.remove('hidden');
+                    } else {
+                        campoVeces.classList.add('hidden');
+                    }
+                });
+            });
+
+            document.querySelectorAll('input[name="tratamientoPrevio"]').forEach(radio => {
+                radio.addEventListener('change', e => {
+                    const campoEspecificar = document.getElementById('campoEspecificarTratamiento');
+                    if (e.target.value === 'si') {
+                        campoEspecificar.classList.remove('hidden');
+                    } else {
+                        campoEspecificar.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Iniciar en la pantalla de login
             navigateTo('screenLogin');
             lucide.createIcons();
         });
     </script>
 </body>
 </html>
+
 
